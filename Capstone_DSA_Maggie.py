@@ -9,7 +9,7 @@ def raw_data (input_file):
   return df
 
 #title
-st.title("Data Excursion for DSA Capstone Project:)
+st.title("Data Excursion for DSA Capstone Project")
 st.markdown("This Dashboard is designed for the capstone project of DSA 2021-2022")
 st.markdown ("By: Maggie Xiong") 
 st.latex(r'''R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu} = \frac{8\pi G}{c^4}T_{\mu\nu}''')
