@@ -22,10 +22,11 @@ with st.expander("Display the data"):
          st.dataframe(df_ori)
          
 #sidebar
+df_1=df_ori
 st.sidebar.markdown("## Define **filters:**")
 score_1, score_2 = st.sidebar.slider("Total score: ", min(df_ori.sum_score), max(df_ori.sum_score), (min(df_ori.sum_score), max(df_ori.sum_score)))    
-df_1=df_ori.query("sum_score>=@score_1 and sum_score<=@score_2")
-time_1, time_2 = st.sidebar.slider("Total response time", 0, 500, (0,500))    
+df_1=df_1.query("sum_score>=@score_1 and sum_score<=@score_2")
+time_1, time_2 = st.sidebar.slider("Total response time",  min(df_ori.rt_total), max(df_ori.rt_total), (min(df_ori.rt_total), max(df_ori.rt_total)))    
 df_1=df_1.query("rt_total>=@time_1 and rt_total<=@time_2")
          
 st.markdown('##Data Visualizaion')
