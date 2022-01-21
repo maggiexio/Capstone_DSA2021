@@ -18,7 +18,7 @@ st.markdown ("By: Maggie Xiong")
          
 # read in data
 df_ori=raw_data("data_capstone_dsa2021_2022.csv")
-df_ori[['state_t', 'country']] = df_ori.state.str.split(expand=True)
+df_ori[['state_t', 'country']] = df_ori.state.str.split(',',expand=True)
          
 with st.expander("Display the data"): 
          st.dataframe(df_ori)
