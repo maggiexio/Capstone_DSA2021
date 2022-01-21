@@ -23,8 +23,8 @@ with st.expander("Display the data"):
          
 #sidebar
 st.sidebar.markdown("## Filter the data")
-score_1, score_2 = st.sidebar.slider("please select age range", 10, 20, (10,20))    
-df_1=df_ori.querry("sum_score>=score_1 and sum_score<=@score_2")
+score_1, score_2 = st.sidebar.slider("please select score range", 0, 20, (0,20))    
+df_1=df_ori.query("sum_score>=score_1 and sum_score<=@score_2")
          
 st.markdown('##Data Visualizaion')
 fig_hist=px.hostogram(df_1, x='sum_score', color='gender', facet_row='home_computer')
