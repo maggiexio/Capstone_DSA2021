@@ -23,10 +23,10 @@ with st.expander("Display the data"):
          
 #sidebar
 st.sidebar.markdown("## Define **filters:**")
-score_1, score_2 = st.sidebar.slider("Total score: ", 0, 20, (0,20))    
+score_1, score_2 = st.sidebar.slider("Total score: ", min(df_ori.sum_score), max(df_ori.sum_score), (min(df_ori.sum_score), max(df_ori.sum_score)))    
 df_1=df_ori.query("sum_score>=@score_1 and sum_score<=@score_2")
 time_1, time_2 = st.sidebar.slider("Total response time", 0, 500, (0,500))    
-df_1=df_ori.query("rt_total>=@time_1 and rt_total<=@time_2")
+df_1=df_1.query("rt_total>=@time_1 and rt_total<=@time_2")
          
 st.markdown('##Data Visualizaion')
 fig_hist=px.histogram(df_1, x='sum_score', color='gender', facet_row='home_computer')
