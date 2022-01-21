@@ -35,7 +35,8 @@ df_1=df_1.query("age>=@age_1 and age<=@age_2")
 title_ch1='Data Visualizaion'
 st.markdown(f'<h2 style="text-aligh: center;color: red;">{title_ch1}</h2>',unsafe_allow_html=True)
 fig_hist=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer', animation_frame='state')
-st.plotly_chart(fig_hist, height=1000)
+fig_hist=px.histogram(df_1, x='sum_score', animation_frame='state')
+st.plotly_chart(fig_hist, height=600)
          
 #Ballon
 a1, a2, a3=st.columns(3)
