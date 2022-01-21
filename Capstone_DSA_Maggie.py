@@ -9,7 +9,8 @@ def raw_data (input_file):
   return df
 
 #title
-st.title("Data Excursion for DSA Capstone Project")
+st.title("Data Excursion")
+st.header("DSA Capstone Project")
 st.markdown("This Dashboard is designed for the capstone project of DSA 2021-2022")
 st.markdown ("By: Maggie Xiong") 
 #st.latex(r'''R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu} = \frac{8\pi G}{c^4}T_{\mu\nu}''')
@@ -25,8 +26,6 @@ with st.expander("Display the data"):
 df_1=df_ori
 st.sidebar.markdown("## Define **filters:**")
 score_1, score_2 = st.sidebar.slider("Total score: ", min(df_ori.sum_score), max(df_ori.sum_score), (min(df_ori.sum_score), max(df_ori.sum_score)))
-with st.sidebar:
-    my_component(greeting="hello")
 df_1=df_1.query("sum_score>=@score_1 and sum_score<=@score_2")
 time_1, time_2 = st.sidebar.slider("Total response time",  min(df_ori.rt_total), max(df_ori.rt_total), (min(df_ori.rt_total), max(df_ori.rt_total)))    
 df_1=df_1.query("rt_total>=@time_1 and rt_total<=@time_2")
