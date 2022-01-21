@@ -5,7 +5,7 @@ import plotly.express as px
 #define functions
 @st.cache
 def raw_data (input_file):
-  df=pd.read.csv(input_file)
+  df=pd.read_csv(input_file)
   return df
 
 #title
