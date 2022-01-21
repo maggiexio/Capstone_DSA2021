@@ -33,7 +33,7 @@ age_1, age_2 = st.sidebar.slider("Age range",  min(df_ori.age), max(df_ori.age),
 df_1=df_1.query("age>=@age_1 and age<=@age_2")
          
 title_ch1='Data Visualizaion'
-st.markdown(f'<h1 style="text-aligh: center;color: pink;">{title_ch1}</h1>',unsafe_allow_html=True)
+st.markdown(f'<h2 style="text-aligh: center;color: red;">{title_ch1}</h2>',unsafe_allow_html=True)
 fig_hist=px.histogram(df_1, x='sum_score', color='gender', facet_row='home_computer')
 st.plotly_chart(fig_hist, height=1000)
          
