@@ -134,7 +134,7 @@ fig_hist1=px.histogram(df_1, x='sum_score', y='rt_total', color='gender', facet_
 st.plotly_chart(fig_hist1, height=600)
 fig_hist2=px.histogram(df_1, x='sum_score',  y='rt_total', animation_frame='state_abbr')
 st.plotly_chart(fig_hist2, height=600)
-fig_3=px.sunburst(df_1, color='state_abbr', values='sum_score', path=['country_abbr','gender'], hover_name='state_abbr')
+fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
 st.plotly_chart(fig_3, height=600)
          
 #Ballon
