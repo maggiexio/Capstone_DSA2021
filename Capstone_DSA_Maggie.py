@@ -97,10 +97,10 @@ def raw_data(input_file):
 #######################text part
 #st.title("Data Excursion")
 title_1="Data Excursion"
-st.markdown(f'<h1 style="text-aligh: center;color: blue;">{title_1}</h1>',unsafe_allow_html=True)
+st.markdown(f'<h1 style="text-aligh: center;color: green;">{title_1}</h1>',unsafe_allow_html=True)
 #st.header("DSA Capstone Project")
 subj_1="          -- DSA Capstone Project"
-st.markdown(f'<h2 style="text-aligh: center;color: blue;">{subj_1}</h2>',unsafe_allow_html=True)
+st.markdown(f'<h2 style="text-aligh: center;color: green;">{subj_1}</h2>',unsafe_allow_html=True)
 st.markdown("This Dashboard is designed for the capstone project of DSA 2021-2022")
 st.markdown ("By: Maggie Xiong") 
 #st.latex(r'''R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu} = \frac{8\pi G}{c^4}T_{\mu\nu}''')
@@ -115,7 +115,7 @@ for i, state_ori in enumerate(df_ori.state):
   df_ori['state_abbr'][i], df_ori['country_abbr'][i] = Find_State_Country(state_ori)
 
 df_ori_1=df_ori.iloc[:,[45,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,44]]  
-with st.expander("Display the data"): 
+with st.expander("Data view"): 
          st.dataframe(df_ori_1)
          
 #sidebar
@@ -129,7 +129,7 @@ age_1, age_2 = st.sidebar.slider("Age range",  min(df_ori.age), max(df_ori.age),
 df_1=df_1.query("age>=@age_1 and age<=@age_2")
          
 title_ch1='Data Visualizaion'
-st.markdown(f'<h3 style="text-aligh: center;color: red;">{title_ch1}</h3>',unsafe_allow_html=True)
+st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
 fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer')
 st.plotly_chart(fig_hist1, height=600)
 fig_hist2=px.histogram(df_1, x='sum_score', animation_frame='state_abbr')
