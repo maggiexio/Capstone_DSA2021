@@ -146,7 +146,7 @@ st.plotly_chart(fig_scatter1, height=1000)
 a1, a2, a3=st.columns(3)
 clicks=a2.button('Export the figure')
 if clicks:
-  fig.write_image("scatter.svg") # static export
-  fig.write_html("scatter.html") # interactive export
-  fig.write_json("scatter.json") # serialized export
+  fig_scatter1.write_image("scatter.svg") # static export
+  fig_scatter1.write_html("scatter.html") # interactive export
+  fig_scatter1.write_json("scatter.json") # serialized export
 #         st.ballons()
