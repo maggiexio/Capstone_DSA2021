@@ -89,7 +89,7 @@ def Find_State_Country(state_name):
     
    
 
-@st.cache
+#@st.cache
 def raw_data(input_file):
   df=pd.read_csv(input_file)
   return df
