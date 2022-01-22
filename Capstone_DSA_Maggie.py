@@ -108,7 +108,7 @@ df_ori['rt_gs_1']=""
 df_ori['state_abbr']=""
 df_ori['country_abbr']=""
 for state_ori in df_ori.state:
-  df_ori.state_abbr, df_ori.country_abbr = Find_State_Country(state_ori)
+  dstate_abbr, country_abbr = Find_State_Country(state_ori)
          
 with st.expander("Display the data"): 
          st.dataframe(df_ori)
