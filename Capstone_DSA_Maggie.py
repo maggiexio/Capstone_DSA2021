@@ -138,7 +138,7 @@ fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
 st.plotly_chart(fig_3, height=600)
 fig_4=px.choropleth(df_1, color='sum_score',  locations='country_abbr')
 st.plotly_chart(fig_4, height=600)
-fig_scatter1=px.scatter(df_1, x='sum_score', y='rt_total', color='gender', size='state_abbr')
+fig_scatter1=px.scatter(df_1, x='sum_score', y='rt_total', color='gender', size='age*10')
 st.plotly_chart(fig_scatter1, height=1000)
          
 #Ballon
