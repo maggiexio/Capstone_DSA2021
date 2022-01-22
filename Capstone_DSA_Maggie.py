@@ -146,5 +146,5 @@ st.plotly_chart(fig_scatter1, height=1000)
 a1, a2, a3=st.columns(3)
 clicks=a2.button('Export the figure')
 if clicks:
-  plotly.offline.plot(fig_scatter1, filename='scatterplot.html')
+  plotly.offline.plot(fig_scatter1, filename='C:\Users\XXiong\Documents\ETS\upskill\Data Science Academy\week 8-10\scatterplot.html')
 #         st.ballons()
