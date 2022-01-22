@@ -140,6 +140,32 @@ fig_4=px.choropleth(df_1, color='sum_score',  locations='country_abbr')
 st.plotly_chart(fig_4, height=600)
 fig_scatter1=px.scatter(df_1, y='sum_score', x='age', color='gender', size='rt_total')
 st.plotly_chart(fig_scatter1, height=1000)
+
+
+##################dash
+from jupyter_dash import JupyterDash
+import dash_html_components as html
+import dash_core_components as dcc
+from dash.dependencies import Input, Output
+df_2 = px.data.gapminder()
+
+app = JupyterDash(__name__)
+
+app.layout = html.Div(children = [
+  dcc.Dropdown(id="state_choice", value='CA', clearable=False,
+    options=[{"label": y, "value": y} for y in df_2['state_abbr'].unique()]),
+  dcc.Graph(id="graph", figure={})
+])
+
+@app.callback(Output('graph', 'figure'), Input('state_choice', 'value'))
+def cb(stat):
+    df_stat = df_2.query("state_abbr == @state_choice")
+    return px.scatter(df_stat, x="sum_total",  size="rt_total",
+          log_x=True, size_max=60, hover_name="country", height=600)
+
+app.run_server(mode="jupyterlab")
+
+
          
 #Ballon
 a1, a2, a3=st.columns(3)
