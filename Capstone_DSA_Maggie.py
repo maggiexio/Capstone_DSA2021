@@ -99,7 +99,7 @@ def raw_data(input_file):
 title_1="Data Excursion"
 st.markdown(f'<h1 style="text-aligh: center;color: blue;">{title_1}</h1>',unsafe_allow_html=True)
 #st.header("DSA Capstone Project")
-subj_1="DSA Capstone Project"
+subj_1="          -- DSA Capstone Project"
 st.markdown(f'<h2 style="text-aligh: center;color: blue;">{subj_1}</h2>',unsafe_allow_html=True)
 st.markdown("This Dashboard is designed for the capstone project of DSA 2021-2022")
 st.markdown ("By: Maggie Xiong") 
