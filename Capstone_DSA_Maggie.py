@@ -76,7 +76,7 @@ def Find_State_Country(state_name):
   state_name=state_name.replace(',',' ',)
   state=''
   country=''
-  for t in set(name.split()):
+  for t in set(state_name.split()):
       if t.upper() in us_state_to_abbrev.keys():
           state=us_state_to_abbrev[t.upper()]
       if  t.upper() in us_state_to_abbrev.values():
