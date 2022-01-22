@@ -136,7 +136,7 @@ fig_hist2=px.histogram(df_1, x='sum_score',  y='rt_total', animation_frame='stat
 st.plotly_chart(fig_hist2, height=600)
 fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
 st.plotly_chart(fig_3, height=600)
-fig_4=px.choropleth(df_1, color='sum_score',  locations='iso_alpha')
+fig_4=px.choropleth(df_1, color='sum_score',  locations='country_abbr')
 st.plotly_chart(fig_4, height=600)
 
          
