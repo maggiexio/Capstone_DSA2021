@@ -107,8 +107,8 @@ df_ori=raw_data("data_capstone_dsa2021_2022.csv")
 df_ori['rt_gs_1']=""
 df_ori['state_abbr']=""
 df_ori['country_abbr']=""
-for state_ori in df_ori.state:
-  df_ori['rt_gs_1'], df_ori['state_abbr'] = Find_State_Country(state_ori)
+for i, state_ori in enumerate(df_ori.state):
+  df_ori['state_abbr'][i], df_ori['country_abbr'][i] = Find_State_Country(state_ori)
          
 with st.expander("Display the data"): 
          st.dataframe(df_ori)
