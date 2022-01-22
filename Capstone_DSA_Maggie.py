@@ -73,7 +73,7 @@ def Find_State_Country(state_name):
   us_state_to_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
   country_abbrev=Turn_DICT_Uppercase(country_abbrev)
 
-  name=name.replace(',',' ',)
+  state_name=state_name.replace(',',' ',)
   state=''
   country=''
   for t in set(name.split()):
