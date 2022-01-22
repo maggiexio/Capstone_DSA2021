@@ -68,14 +68,14 @@ def Find_State_Country(state_name):
    }
   country_abbrev={
     "Canada": "CA",
-    "United State of America": "USA",
+    "United States of America": "USA",
   }
   us_state_to_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
   country_abbrev=Turn_DICT_Uppercase(country_abbrev)
 
   state_name=state_name.replace(',',' ',)
   state=''
-  country=''
+  country='USA'
   for t in set(state_name.split()):
       if t.upper() in us_state_to_abbrev.keys():
           state=us_state_to_abbrev[t.upper()]
