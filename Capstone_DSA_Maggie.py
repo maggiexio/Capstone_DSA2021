@@ -104,7 +104,7 @@ st.markdown ("By: Maggie Xiong")
          
 # read in data
 df_ori=raw_data("data_capstone_dsa2021_2022.csv")
-for state_ori in df.state:
+for state_ori in df_ori.state:
   df_ori.state_abbr, df_ori.country_abbr = Find_State_Country(state_ori)
          
 with st.expander("Display the data"): 
