@@ -118,7 +118,7 @@ df_ori_1=df_ori.iloc[:,[45,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
 with st.expander("Data view"): 
          st.dataframe(df_ori_1)
          
-#sidebar
+# Filters
 df_1=df_ori
 st.sidebar.markdown("## Define **filters:**")
 score_1, score_2 = st.sidebar.slider("Total score: ", min(df_ori.sum_score), max(df_ori.sum_score), (min(df_ori.sum_score), max(df_ori.sum_score)))
@@ -141,10 +141,12 @@ st.plotly_chart(fig_4, height=600)
 fig_scatter1=px.scatter_3d(df_1, y='sum_score', x='age', z='home_computer', color='gender', size='rt_total')
 st.plotly_chart(fig_scatter1, height=1000)
 
-
-         
+        
 #Ballon
 a1, a2, a3=st.columns(3)
-clicks=a2.button('click to celebrate')
+clicks=a2.button('Export the figure')
 if clicks:
-         st.ballons()
+  fig.write_image("scatter.svg") # static export
+  fig.write_html("scatter.html") # interactive export
+  fig.write_json("scatter.json") # serialized export
+#         st.ballons()
