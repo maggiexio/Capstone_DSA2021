@@ -131,9 +131,9 @@ df_1=df_1.query("age>=@age_1 and age<=@age_2")
 sex=df_1['gender'].drop_duplicates()
 mode=df_1['home_computer'].drop_duplicates()
 sex_choice = st.sidebar.selectbox('Select gender:', sex)
-df_1=df_1.query("gender==@sex")
+df_1=df_1.query("gender==@sex_choice")
 mode_choice = st.sidebar.selectbox('Select gender:', mode)
-df_1=df_1.query("home_computer==@mode")
+df_1=df_1.query("home_computer==@mode_choice")
 
 title_ch1='Data Visualizaion'
 st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
