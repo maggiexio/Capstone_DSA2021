@@ -128,8 +128,8 @@ time_1, time_2 = st.sidebar.slider("Total response time (note: response time for
 df_1=df_1.query("rt_total>=@time_1 and rt_total<=@time_2")
 age_1, age_2 = st.sidebar.slider("Age range",  min(df_ori.age), max(df_ori.age), (min(df_ori.age), max(df_ori.age)))    
 df_1=df_1.query("age>=@age_1 and age<=@age_2")
-sex=df_1['gender']
-mode=df_1['home_computer']
+sex=df_1['gender'].drop_duplicates()
+mode=df_1['home_computer'].drop_duplicates()
 sex_choice = st.sidebar.selectbox('Select gender:', sex)
 df_1=df_1.query("gender==@sex")
 mode_choice = st.sidebar.selectbox('Select gender:', mode)
