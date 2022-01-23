@@ -130,10 +130,10 @@ age_1, age_2 = st.sidebar.slider("Age range",  min(df_ori.age), max(df_ori.age),
 df_1=df_1.query("age>=@age_1 and age<=@age_2")
 sex=['All']
 sex1=df_1['gender'].drop_duplicates()
-sex=sex.append(sex1)
-mode2=['All']
+sex.append(sex1)
+mode=['All']
 mode1=df_1['home_computer'].drop_duplicates()
-mode2.append(mode1)
+mode.append(mode1)
 sex_choice = st.sidebar.selectbox('Select gender:', sex)
 if sex_choice != "All":
   df_1=df_1.query("gender==@sex_choice")
