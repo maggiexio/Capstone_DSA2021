@@ -152,7 +152,7 @@ st.plotly_chart(fig_4, height=600)
 title_ch3='****3D interactive plots********'
 st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch3}</h4>',unsafe_allow_html=True)
 fig_scatter1=px.scatter_3d(df_1, y='sum_score', x='age', z='home_computer', color='gender', size='rt_total')
-st.plotly_chart(fig_scatter1, height=1000)
+st.plotly_chart(fig_scatter1, height=1500)
 
         
 #Ballon
