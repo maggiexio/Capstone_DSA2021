@@ -130,6 +130,9 @@ age_1, age_2 = st.sidebar.slider("Age range",  min(df_ori.age), max(df_ori.age),
 df_1=df_1.query("age>=@age_1 and age<=@age_2")
 #sex=df_1['gender'].drop_duplicates()
 #mode=df_1['home_computer'].drop_duplicates()
+with st.sidebar.beta_container():
+  st.header()
+  st.checkbox('All')
 sex_choice = st.sidebar.selectbox('Select gender:', ['All', 'Male', 'Female'])
 if sex_choice != "All":
   df_1=df_1.query("gender==@sex_choice")
@@ -140,6 +143,12 @@ if mode_choice != "All":
 #if mode_choice != "All":
 #  df_1=df_1.query("home_computer==@radio1")
 
+with st.sidebar.form(key ='Form1'):
+    user_word = st.text_input("Enter a keyword", "habs")    
+    select_language = st.radio('Whether take the test at home:', ('All', 'Yes', 'No'))
+    include_retweets = st.checkbox('Include retweets in data')
+    num_of_tweets = st.number_input('Maximum number of tweets', 100)
+    submitted1 = st.form_submit_button(label = 'Search Twitter 🔎')
 
 title_ch1='Data Visualizaion'
 st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
