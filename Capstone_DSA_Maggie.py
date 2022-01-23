@@ -128,16 +128,12 @@ time_1, time_2 = st.sidebar.slider("Total response time (note: response time for
 df_1=df_1.query("rt_total>=@time_1 and rt_total<=@time_2")
 age_1, age_2 = st.sidebar.slider("Age range",  min(df_ori.age), max(df_ori.age), (min(df_ori.age), max(df_ori.age)))    
 df_1=df_1.query("age>=@age_1 and age<=@age_2")
-sex=['All']
-sex1=df_1['gender'].drop_duplicates()
-sex.append(sex1)
-mode=['All']
-mode1=df_1['home_computer'].drop_duplicates()
-mode.append(mode1)
-sex_choice = st.sidebar.selectbox('Select gender:', sex)
+#sex=df_1['gender'].drop_duplicates()
+#mode=df_1['home_computer'].drop_duplicates()
+sex_choice = st.sidebar.selectbox('Select gender:', ['All', 'Male', 'FEMALE'])
 if sex_choice != "All":
   df_1=df_1.query("gender==@sex_choice")
-mode_choice = st.sidebar.selectbox('Whether take the test at home:', mode)
+mode_choice = st.sidebar.selectbox('Whether take the test at home:', ['All', 'Yes', 'No'])
 if mode_choice != "All":
   df_1=df_1.query("home_computer==@mode_choice")
 
