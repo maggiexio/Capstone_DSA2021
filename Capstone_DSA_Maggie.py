@@ -130,7 +130,7 @@ age_1, age_2 = st.sidebar.slider("Age range",  min(df_ori.age), max(df_ori.age),
 df_1=df_1.query("age>=@age_1 and age<=@age_2")
 #sex=df_1['gender'].drop_duplicates()
 #mode=df_1['home_computer'].drop_duplicates()
-sex_choice = st.sidebar.selectbox('Select gender:', ['All', 'Male', 'FEMALE'])
+sex_choice = st.sidebar.selectbox('Select gender:', ['All', 'Male', 'Female'])
 if sex_choice != "All":
   df_1=df_1.query("gender==@sex_choice")
 mode_choice = st.sidebar.selectbox('Whether take the test at home:', ['All', 'Yes', 'No'])
