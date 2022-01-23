@@ -128,7 +128,13 @@ time_1, time_2 = st.sidebar.slider("Total response time (note: response time for
 df_1=df_1.query("rt_total>=@time_1 and rt_total<=@time_2")
 age_1, age_2 = st.sidebar.slider("Age range",  min(df_ori.age), max(df_ori.age), (min(df_ori.age), max(df_ori.age)))    
 df_1=df_1.query("age>=@age_1 and age<=@age_2")
-         
+sex=df_1['gender']
+mode=df_1['home_computer']
+sex_choice = st.sidebar.selectbox('Select gender:', sex)
+df_1=df_1.query("gender==@sex")
+mode_choice = st.sidebar.selectbox('Select gender:', mode)
+df_1=df_1.query("home_computer==@mode")
+
 title_ch1='Data Visualizaion'
 st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
 fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer')
