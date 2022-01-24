@@ -97,13 +97,7 @@ def raw_data(input_file):
 
 #######################
 
-st.set_page_config(layout="wide", initial_sidebar_state="collapsed"
-                    menu_items={
-         'Get Help': 'https://www.extremelycoolapp.com/help',
-         'Report a bug': "https://www.extremelycoolapp.com/bug",
-         'About': "# This is a header. This is an *extremely* cool app!"
-     }
-                  )
+st.set_page_config(layout="wide", initial_sidebar_state="collapsed")                  )
 col11, col12 = st.columns((3,1))
 with col11:
   title_1="Data Excursion"
