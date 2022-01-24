@@ -96,11 +96,11 @@ def raw_data(input_file):
   return df
 
 #######################
-col11, col12, col13 = st.columns([1,1,1])
-with col12:
+col11, col12 = st.columns([1,1])
+with col11:
   title_1="Data Excursion"
   st.markdown(f'<h1 style="text-aligh: center;color: green;">{title_1}</h1>',unsafe_allow_html=True)
-with col13:
+with col12:
   subj_1="          -- DSA Capstone Project"
   st.markdown(f'<h2 style="text-aligh: center;color: green;">{subj_1}</h2>',unsafe_allow_html=True)
   
