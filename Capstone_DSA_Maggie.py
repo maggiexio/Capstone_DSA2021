@@ -143,17 +143,6 @@ if mode_choice != "All":
 #if mode_choice != "All":
 #  df_1=df_1.query("home_computer==@radio1")
 
-with st.sidebar.form(key ='Form1'):
-  st.markdown("## Define **filters:**")
-  score_1, score_2 = st.slider("Total score: ", min(df_ori.sum_score), max(df_ori.sum_score), (min(df_ori.sum_score), max(df_ori.sum_score)))
-  df_1=df_1.query("sum_score>=@score_1 and sum_score<=@score_2")
-  
-with st.sidebar.form(key ='Form2'):
-    user_word = st.text_input("Enter a keyword", "habs")    
-    select_language = st.radio('Whether take the test at home:', ('All', 'Yes', 'No'))
-    include_retweets = st.checkbox('Include retweets in data')
-    num_of_tweets = st.number_input('Maximum number of tweets', 100)
-    submitted1 = st.form_submit_button(label = 'Search Twitter 🔎')
 
 title_ch1='Data Visualizaion'
 st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
