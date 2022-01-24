@@ -96,6 +96,7 @@ def raw_data(input_file):
   return df
 
 #######################
+st.set_page_config(layout="wide")
 col11, col12 = st.columns((3,1))
 with col11:
   title_1="Data Excursion"
