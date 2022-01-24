@@ -139,6 +139,10 @@ if mode_choice != "All":
 #radio1=st.radio('Navigation', ['All', 'Yes', 'No'], index=1)
 #if mode_choice != "All":
 #  df_1=df_1.query("home_computer==@radio1")
+state_1=df_1['state_abbr'].drop_duplicates()
+state_choice = st.sidebar.multiselect('Select state:', state_1)
+df_1=df_1.query("state_abbr==@state_choice")
+
 
 title_ch1='Data Visualizaion'
 st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
