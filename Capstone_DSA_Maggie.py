@@ -106,7 +106,9 @@ with col11:
 st.markdown("This Dashboard is designed for the capstone project of DSA 2021-2022")
 st.markdown ("By: Maggie Xiong") 
 
-         
+with col12:
+  title_11="Updated news"
+  st.markdown(f'<h1 style="text-align: center;color: black;">{title_11}</h1>',unsafe_allow_html=True)         
          
 # read in data
 df_ori=raw_data("data_capstone_dsa2021_2022.csv")
