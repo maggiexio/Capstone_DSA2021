@@ -133,12 +133,12 @@ df_1=df_1.query("age>=@age_1 and age<=@age_2")
 sex_choice = st.sidebar.selectbox('Select gender:', ['All', 'Male', 'Female'])
 if sex_choice != "All":
   df_1=df_1.query("gender==@sex_choice")
-#mode_choice = st.sidebar.radio('Whether take the test at home:', ['All', 'Yes', 'No'])
-#if mode_choice != "All":
-#  df_1=df_1.query("home_computer==@mode_choice")
-radio1=st.radio('Navigation', ['All', 'Yes', 'No'], index=1)
+mode_choice = st.sidebar.radio('Whether take the test at home:', ['All', 'Yes', 'No'])
 if mode_choice != "All":
-  df_1=df_1.query("home_computer==@radio1")
+  df_1=df_1.query("home_computer==@mode_choice")
+#radio1=st.radio('Navigation', ['All', 'Yes', 'No'], index=1)
+#if mode_choice != "All":
+#  df_1=df_1.query("home_computer==@radio1")
 
 title_ch1='Data Visualizaion'
 st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
