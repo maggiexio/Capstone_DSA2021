@@ -131,7 +131,7 @@ df_1=df_1.query("age>=@age_1 and age<=@age_2")
 #sex=df_1['gender'].drop_duplicates()
 #mode=df_1['home_computer'].drop_duplicates()
 with st.sidebar.beta_container():
-  st.header()
+  st.header('Radio choice')
   st.checkbox('All')
 sex_choice = st.sidebar.selectbox('Select gender:', ['All', 'Male', 'Female'])
 if sex_choice != "All":
