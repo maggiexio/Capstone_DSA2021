@@ -121,28 +121,24 @@ with st.expander("Data view"):
          
 # Filters
 df_1=df_ori
-#st.sidebar.markdown("## Define **filters:**")
-#score_1, score_2 = st.sidebar.slider("Total score: ", min(df_ori.sum_score), max(df_ori.sum_score), (min(df_ori.sum_score), max(df_ori.sum_score)))
-#df_1=df_1.query("sum_score>=@score_1 and sum_score<=@score_2")
+st.sidebar.markdown("## Define **filters:**")
+score_1, score_2 = st.sidebar.slider("Total score: ", min(df_ori.sum_score), max(df_ori.sum_score), (min(df_ori.sum_score), max(df_ori.sum_score)))
+df_1=df_1.query("sum_score>=@score_1 and sum_score<=@score_2")
 time_1, time_2 = st.sidebar.slider("Total response time (note: response time for the first item is missing hence excluded",  min(df_ori.rt_total), max(df_ori.rt_total), (min(df_ori.rt_total), max(df_ori.rt_total)))    
 df_1=df_1.query("rt_total>=@time_1 and rt_total<=@time_2")
 age_1, age_2 = st.sidebar.slider("Age range",  min(df_ori.age), max(df_ori.age), (min(df_ori.age), max(df_ori.age)))    
 df_1=df_1.query("age>=@age_1 and age<=@age_2")
 #sex=df_1['gender'].drop_duplicates()
 #mode=df_1['home_computer'].drop_duplicates()
-with st.sidebar.beta_container():
-  st.header('Radio choice')
-  st.checkbox('All')
 sex_choice = st.sidebar.selectbox('Select gender:', ['All', 'Male', 'Female'])
 if sex_choice != "All":
   df_1=df_1.query("gender==@sex_choice")
-mode_choice = st.sidebar.radio('Whether take the test at home:', ['All', 'Yes', 'No'])
-if mode_choice != "All":
-  df_1=df_1.query("home_computer==@mode_choice")
-#radio1=st.radio('Navigation', ['All', 'Yes', 'No'], index=1)
+#mode_choice = st.sidebar.radio('Whether take the test at home:', ['All', 'Yes', 'No'])
 #if mode_choice != "All":
-#  df_1=df_1.query("home_computer==@radio1")
-
+#  df_1=df_1.query("home_computer==@mode_choice")
+radio1=st.radio('Navigation', ['All', 'Yes', 'No'], index=1)
+if mode_choice != "All":
+  df_1=df_1.query("home_computer==@radio1")
 
 title_ch1='Data Visualizaion'
 st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
