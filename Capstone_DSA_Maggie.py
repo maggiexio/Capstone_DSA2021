@@ -103,9 +103,9 @@ with col11:
   st.markdown(f'<h1 style="text-align: center;color: green;">{title_1}</h1>',unsafe_allow_html=True)
   subj_1="-- DSA Capstone Project"
   st.markdown(f'<h2 style="text-align: center;color: green;">{subj_1}</h2>',unsafe_allow_html=True) 
+  st.markdown ("By: Maggie Xiong")
   st.markdown("This Dashboard is designed for the capstone project of DSA 2021-2022. Data file include 1169 studnets reponse time and raw score to each of the 20 items in the exampnation. Response time of the first item is missing. Total reponse time and score, together with geographical information and age are also provided. ")
-  st.markdown ("By: Maggie Xiong") 
-
+   
 with col12:
   title_11="Updated news"
   st.markdown(f'<h1 style="text-align: center;color: black;">{title_11}</h1>',unsafe_allow_html=True)         
