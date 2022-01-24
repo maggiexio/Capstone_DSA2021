@@ -121,9 +121,9 @@ with st.expander("Data view"):
          
 # Filters
 df_1=df_ori
-st.sidebar.markdown("## Define **filters:**")
-score_1, score_2 = st.sidebar.slider("Total score: ", min(df_ori.sum_score), max(df_ori.sum_score), (min(df_ori.sum_score), max(df_ori.sum_score)))
-df_1=df_1.query("sum_score>=@score_1 and sum_score<=@score_2")
+#st.sidebar.markdown("## Define **filters:**")
+#score_1, score_2 = st.sidebar.slider("Total score: ", min(df_ori.sum_score), max(df_ori.sum_score), (min(df_ori.sum_score), max(df_ori.sum_score)))
+#df_1=df_1.query("sum_score>=@score_1 and sum_score<=@score_2")
 time_1, time_2 = st.sidebar.slider("Total response time (note: response time for the first item is missing hence excluded",  min(df_ori.rt_total), max(df_ori.rt_total), (min(df_ori.rt_total), max(df_ori.rt_total)))    
 df_1=df_1.query("rt_total>=@time_1 and rt_total<=@time_2")
 age_1, age_2 = st.sidebar.slider("Age range",  min(df_ori.age), max(df_ori.age), (min(df_ori.age), max(df_ori.age)))    
@@ -144,6 +144,11 @@ if mode_choice != "All":
 #  df_1=df_1.query("home_computer==@radio1")
 
 with st.sidebar.form(key ='Form1'):
+  st.markdown("## Define **filters:**")
+  score_1, score_2 = st.slider("Total score: ", min(df_ori.sum_score), max(df_ori.sum_score), (min(df_ori.sum_score), max(df_ori.sum_score)))
+  df_1=df_1.query("sum_score>=@score_1 and sum_score<=@score_2")
+  
+with st.sidebar.form(key ='Form2'):
     user_word = st.text_input("Enter a keyword", "habs")    
     select_language = st.radio('Whether take the test at home:', ('All', 'Yes', 'No'))
     include_retweets = st.checkbox('Include retweets in data')
