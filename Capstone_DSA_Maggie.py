@@ -96,7 +96,7 @@ def raw_data(input_file):
   return df
 
 #######################
-col11, col12 = st.beta_columns((3,1))
+col11, col12 = st.columns((3,1))
 with col11:
   title_1="Data Excursion"
   st.markdown(f'<h1 style="text-aligh: center;color: green;">{title_1}</h1>',unsafe_allow_html=True)
