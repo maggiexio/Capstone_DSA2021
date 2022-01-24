@@ -95,16 +95,16 @@ def raw_data(input_file):
   df=pd.read_csv(input_file)
   return df
 
-#######################text part
-#st.title("Data Excursion")
-title_1="Data Excursion"
-st.markdown(f'<h1 style="text-aligh: center;color: green;">{title_1}</h1>',unsafe_allow_html=True)
-#st.header("DSA Capstone Project")
-subj_1="          -- DSA Capstone Project"
-st.markdown(f'<h2 style="text-aligh: center;color: green;">{subj_1}</h2>',unsafe_allow_html=True)
-st.markdown("This Dashboard is designed for the capstone project of DSA 2021-2022")
-st.markdown ("By: Maggie Xiong") 
-#st.latex(r'''R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu} = \frac{8\pi G}{c^4}T_{\mu\nu}''')
+#######################
+col11, col12 = st.beta_columns((3,1))
+with col11:
+  title_1="Data Excursion"
+  st.markdown(f'<h1 style="text-aligh: center;color: green;">{title_1}</h1>',unsafe_allow_html=True)
+  subj_1="          -- DSA Capstone Project"
+  st.markdown(f'<h2 style="text-aligh: center;color: green;">{subj_1}</h2>',unsafe_allow_html=True)
+  st.markdown("This Dashboard is designed for the capstone project of DSA 2021-2022")
+  st.markdown ("By: Maggie Xiong") 
+
          
          
 # read in data
