@@ -7,6 +7,16 @@ import plotly.express as px
 def Turn_DICT_Uppercase(dic):
   return {k.upper():v.upper() for k,v in dic.items()}
 
+def table_download(df):
+    """Generates a link allowing the data in a given panda dataframe to be downloaded
+    in:  dataframe
+    out: href string
+    """
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+    href = f'<a href="data:file/csv;base64,{b64}">Download csv file</a>'
+    return href
+
 def Find_State_Country(state_name):
   us_state_to_abbrev = {
     "Alabama": "AL",
@@ -110,7 +120,7 @@ with col12:
   title_11="Hello! I am Alexa. Can I help you?"
   st.markdown(f'<h2 style="text-align: center;color: black;">{title_11}</h2>',unsafe_allow_html=True)
   user_input =''
-  user_input = st.text_area("Type your questions here (enter 'contrl+enter' to finish your questions)", value="", max_chars=1000)
+  user_input = st.text_area("Type your questions here (enter 'contrl+enter' to finish your questions)", value="", max_chars=5000)
   if user_input.lower()=='no question':
     st.write ("Great! Have a nice day!")
          
@@ -137,6 +147,9 @@ with col11:
       else:
         df_ori_2=df_ori_1.query("state_abbr in @state_choice")
       st.dataframe(df_ori_2)
+  download_1=button('download the file')
+  if download_1:
+    st.markdown(table_download(df), unsafe_allow_html=True)
          
 # Filters
 df_1=df_ori
