@@ -126,7 +126,7 @@ with col11:
         """)
       state_1=df_ori_1['state_abbr'].drop_duplicates()
       state_choice=st.multiselect("", state_1)
-      df_ori_2=df_ori_1.query("state_abbr==@state_choice")
+      df_ori_2=df_ori_1.query("state_abbr in @state_choice")
       st.dataframe(df_ori_2)
          
 # Filters
