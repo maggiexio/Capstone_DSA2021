@@ -126,8 +126,8 @@ with col11:
         """)
       state_1=df_ori_1['state_abbr'].drop_duplicates()
       default_state=['All']
-      state_2=default_state.extend(state_1)
-      state_choice=st.multiselect("", state_2)
+      default_state.extend(state_1)
+      state_choice=st.multiselect("", default_state)
       if ('All' in state_choice):
         df_ori_2=df_ori_1
       else:
