@@ -110,7 +110,7 @@ with col12:
   title_11="Hello! I am Alexa. Can I help you?"
   st.markdown(f'<h2 style="text-align: center;color: black;">{title_11}</h2>',unsafe_allow_html=True)
   user_input =''
-  user_input = st.text_area("Type your questions here (enter 'contrl+enter' to finish your questions)", "")
+  user_input = st.text_area("Type your questions here (enter 'contrl+enter' to finish your questions)", value="", max_chars=1000)
   if user_input.lower()=='no question':
     st.write ("Great! Have a nice day!")
          
