@@ -149,7 +149,7 @@ with col11:
       st.dataframe(df_ori_2)
 download_1=col11.button('download the file')
 if download_1:
-    st.markdown(table_download(df), unsafe_allow_html=True)
+    st.markdown(table_download(df_ori_2), unsafe_allow_html=True)
          
 # Filters
 df_1=df_ori
