@@ -147,8 +147,8 @@ with col11:
       else:
         df_ori_2=df_ori_1.query("state_abbr in @state_choice")
       st.dataframe(df_ori_2)
-  download_1=button('download the file')
-  if download_1:
+download_1=col11.button('download the file')
+if download_1:
     st.markdown(table_download(df), unsafe_allow_html=True)
          
 # Filters
