@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly
 import plotly.express as px
+import base64
 
 #define functions
 def Turn_DICT_Uppercase(dic):
@@ -14,7 +15,7 @@ def table_download(df):
     """
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode() 
-    href = f'<a href="data:file/csv;base64,{b64}">Download csv file</a>'
+    href = f'<a href="data:file/csv;base64,{b64}" download="myfile.csv">Download csv file</a>'
     return href
 
 def Find_State_Country(state_name):
