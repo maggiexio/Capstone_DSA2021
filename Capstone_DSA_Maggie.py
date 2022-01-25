@@ -96,7 +96,6 @@ def raw_data(input_file):
   return df
 
 #######################
-
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 col11, col12 = st.columns((3,1))
 with col11:
@@ -109,7 +108,7 @@ with col11:
    
 with col12:
   title_11="Updated news"
-  st.markdown(f'<h1 style="text-align: center;color: black;">{title_11}</h1>',unsafe_allow_html=True)         
+  st.markdown(f'<h2 style="text-align: center;color: black;">{title_11}</h2>',unsafe_allow_html=True)         
          
 # read in data
 df_ori=raw_data("data_capstone_dsa2021_2022.csv")
@@ -122,7 +121,13 @@ for i, state_ori in enumerate(df_ori.state):
 df_ori_1=df_ori.iloc[:,[45,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,44]]  
 with col11:  
   with st.expander("Data view"): 
-         st.dataframe(df_ori_1)
+      st.write("""
+        Please select which **state** data you want to view. 
+        """)
+      state_1=df_1['state_abbr'].drop_duplicates()
+      state_choice=st.multiselect("", state_1)
+      df_1=df_1.query("state_abbr==@state_choice")
+      st.dataframe(df_ori_1)
          
 # Filters
 df_1=df_ori
