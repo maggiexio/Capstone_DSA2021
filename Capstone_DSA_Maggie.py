@@ -190,6 +190,7 @@ with col11:
   with st.expander("choropleth map"):    
     fig_4=px.choropleth(df_1, color='sum_score',  locations='country_abbr')
     st.plotly_chart(fig_4, height=600)
+    st.map(df_1)
   title_ch3='****3D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch3}</h4>',unsafe_allow_html=True)
   with st.expander(""):   
