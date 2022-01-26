@@ -269,8 +269,8 @@ with col11:
   with st.expander(""): 
     rt_diff = (df_1["rt_total"].max() - df_1["rt_total"].min()) / 15
     df_1["rt_scale"] = (df_1["rt_total"] - df_1["rt_total"].min()) / rt_diff + 1
-    df_1["rt_scale"] = pow(df_1["rt_scale"],3)
-    fig_scatter1=px.scatter_3d(df_1, y='sum_score', x='age', z='home_computer', color='gender', size='rt_scale', size_max=40)
+    df_1["rt_scale"] = pow(df_1["rt_scale"],2)
+    fig_scatter1=px.scatter_3d(df_1, y='sum_score', x='age', z='home_computer', color='gender', size='rt_scale', size_max=60)
     st.plotly_chart(fig_scatter1, width=1500, height=1500)
 
         
