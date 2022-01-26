@@ -258,7 +258,7 @@ with col11:
   with st.expander("Animation"):    
     fig_hist2=px.bar(df_1, x='age_group', animation_frame='state_abbr', color='gender')
     st.plotly_chart(fig_hist2, width=600, height=600)
-  with st.expander("Bar Charts"):    
+  with st.expander("Pie Charts"):    
     fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
     st.plotly_chart(fig_3,  width=600, height=600)
   with st.expander("choropleth map"):    
