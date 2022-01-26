@@ -148,7 +148,7 @@ with col11:
       else:
         df_ori_2=df_ori_1.query("state_abbr in @state_choice")
       st.dataframe(df_ori_2)
-download_1=col11.button('download the file')
+download_1=col11.button('Download the file')
 if download_1:
     st.markdown(table_download(df_ori_2), unsafe_allow_html=True)
          
@@ -181,20 +181,20 @@ with col11:
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch2}</h4>',unsafe_allow_html=True)
   with st.expander("Histogram"):    
     fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer')
-    st.plotly_chart(fig_hist1, height=600)
+    st.plotly_chart(fig_hist1, width=600, height=600)
     fig_hist2=px.histogram(df_1, x='sum_score', animation_frame='state_abbr')
-    st.plotly_chart(fig_hist2, height=600)
+    st.plotly_chart(fig_hist2, width=600, height=600)
   with st.expander("Bar Charts"):    
     fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
-    st.plotly_chart(fig_3, height=600)
+    st.plotly_chart(fig_3,  width=600, height=600)
   with st.expander("choropleth map"):    
     fig_4=px.choropleth(df_1, color='sum_score',  locations='country_abbr')
-    st.plotly_chart(fig_4, height=600)
+    st.plotly_chart(fig_4, width=600, height=600)
   title_ch3='****3D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch3}</h4>',unsafe_allow_html=True)
   with st.expander(""):   
     fig_scatter1=px.scatter_3d(df_1, y='sum_score', x='age', z='home_computer', color='gender', size='rt_total')
-    st.plotly_chart(fig_scatter1, height=1500)
+    st.plotly_chart(fig_scatter1, width=1500, height=1500)
 
         
 #Ballon
