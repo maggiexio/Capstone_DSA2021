@@ -278,5 +278,5 @@ with col11:
 clicks=col11.button('Export the figure')
 if clicks:
 #  plotly.offline.plot(fig_scatter1, filename='C:/Users/XXiong/Downloads/lifeExp.html')
-  fig_scatter1.write_html("C:/Users/XXiong/Downloads/file.html")
+  fig_scatter1.write_html("file.html")
 #         st.ballons()
