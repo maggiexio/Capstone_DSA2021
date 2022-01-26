@@ -258,10 +258,10 @@ with col11:
     st.plotly_chart(fig_hist1, width=600, height=600)
   with st.expander("Animation"):  
     fig_ani1=px.bar(df_1, x='age_group', animation_frame='state_abbr', color='gender')
-    fig_ani1.update_layout(transition = {'duration': 2000})
+    fig_ani1.update_layout(transition = {'duration': 8000})
     st.plotly_chart(fig_ani1, width=600, height=600)
     fig_ani2=px.scatter(df_1, y='sum_score', x='age', animation_frame='state_abbr', color='gender', size='rt_scale', size_max=60)
-    fig_ani2.update_layout(transition = {'duration': 2000})
+    fig_ani2.update_layout(transition = {'duration': 8000})
     st.plotly_chart(fig_ani2, width=600, height=600)   
   with st.expander("Pie Charts"):    
     fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
