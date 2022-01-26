@@ -187,6 +187,7 @@ with col11:
   with st.expander("Histogram"):    
     fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer', marginal='box')
     st.plotly_chart(fig_hist1, width=600, height=600)
+  with st.expander("Animation"):    
     fig_hist2=px.bar(df_1, x='age_group', animation_frame='state_abbr', color='gender')
     st.plotly_chart(fig_hist2, width=600, height=600)
   with st.expander("Bar Charts"):    
