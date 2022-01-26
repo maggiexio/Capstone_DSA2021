@@ -180,7 +180,7 @@ with col11:
   title_ch2='****2D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch2}</h4>',unsafe_allow_html=True)
   with st.expander("Histogram"):    
-    fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer')
+    fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer', marginal='rug')
     st.plotly_chart(fig_hist1, width=600, height=600)
     fig_hist2=px.histogram(df_1, x='sum_score', animation_frame='state_abbr')
     st.plotly_chart(fig_hist2, width=600, height=600)
