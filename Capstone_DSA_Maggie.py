@@ -258,6 +258,7 @@ with col11:
     st.plotly_chart(fig_hist1, width=600, height=600)
   with st.expander("Bar charts"): 
     sorted_df = df_1.sort_values(by='age')
+    sorted_df = sorted_df.reset_index(drop=True)
     st.dataframe(sorted_df)
     fig_bar1=px.bar(sorted_df, y='sum_score', color='age_group', facet_row='age_group', opacity=0.4)
     st.plotly_chart(fig_bar1, width=600, height=600)
