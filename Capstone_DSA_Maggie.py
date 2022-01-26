@@ -130,10 +130,15 @@ df_ori=raw_data("data_capstone_dsa2021_2022.csv")
 df_ori['rt_gs_1']=""
 df_ori['state_abbr']=""
 df_ori['country_abbr']=""
+df_ori['age_group']=""
+bins= [0,20,35,55,80]
+labels = ['Teen','Young Adult','Mid-aged Adult','Older Adult']
+df_ori['age_group'] = pd.cut(df_ori['age'], bins=bins, labels=labels, right=False)
+df_ori['age_group'] = X_train_data['AgeGroup'].cat.add_categories('unknown').fillna('unknown')    
+  
 for i, state_ori in enumerate(df_ori.state):
   df_ori['state_abbr'][i], df_ori['country_abbr'][i] = Find_State_Country(state_ori)
-
-df_ori_1=df_ori.iloc[:,[45,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,44]]  
+df_ori_1=df_ori.iloc[:,[45,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,44,46]]  
 with col11:  
   with st.expander("Data view"): 
       st.write("""
@@ -182,7 +187,7 @@ with col11:
   with st.expander("Histogram"):    
     fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer', marginal='box')
     st.plotly_chart(fig_hist1, width=600, height=600)
-    fig_hist2=px.bar(df_1, x='sum_score', animation_frame='state_abbr', color='gender')
+    fig_hist2=px.bar(df_1, x='age_group', animation_frame='state_abbr', color='gender')
     st.plotly_chart(fig_hist2, width=600, height=600)
   with st.expander("Bar Charts"):    
     fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
