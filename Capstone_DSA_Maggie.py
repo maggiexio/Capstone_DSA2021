@@ -9,6 +9,9 @@ import os
 def Turn_DICT_Uppercase(dic):
   return {k.upper():v.upper() for k,v in dic.items()}
 
+def is_similar(first, second, ratio):
+    return difflib.SequenceMatcher(None, first, second).ratio() > ratio
+
 def table_download(df):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
     in:  dataframe
@@ -135,9 +138,71 @@ df_ori['age_group']=""
 bins= [0,20,35,55,80]
 labels = ['Teen(<20)','Young Adult(20,35)','Mid-aged Adult(35-55)','Older Adult(>55)']
 df_ori['age_group'] = pd.cut(df_ori['age'], bins=bins, labels=labels, right=False)
-df_ori['age_group'] = df_ori['age_group'].cat.add_categories('unknown').fillna('unknown')    
+df_ori['age_group'] = df_ori['age_group'].cat.add_categories('unknown').fillna('unknown')  
+
+name_list= ["Alabama", "AL",
+    "Alaska", "AK",
+    "Arizona", "AZ",
+    "Arkansas", "AR",
+    "California", "CA",
+    "Colorado", "CO",
+    "Connecticut", "CT",
+    "Delaware", "DE",
+    "Florida", "FL",
+    "Georgia", "GA",
+    "Hawaii", "HI",
+    "Idaho", "ID",
+    "Illinois", "IL",
+    "Indiana", "IN",
+    "Iowa", "IA",
+    "Kansas", "KS",
+    "Kentucky", "KY",
+    "Louisiana", "LA",
+    "Maine", "ME",
+    "Maryland", "MD",
+    "Massachusetts", "MA",
+    "Michigan", "MI",
+    "Minnesota", "MN",
+    "Mississippi", "MS",
+    "Missouri", "MO",
+    "Montana", "MT",
+    "Nebraska", "NE",
+    "Nevada", "NV",
+    "New Hampshire", "NH",
+    "New Jersey", "NJ",
+    "New Mexico", "NM",
+    "New York", "NY",
+    "North Carolina", "NC",
+    "North Dakota", "ND",
+    "Ohio", "OH",
+    "Oklahoma", "OK",
+    "Oregon", "OR",
+    "Pennsylvania", "PA",
+    "Rhode Island", "RI",
+    "South Carolina", "SC",
+    "South Dakota", "SD",
+    "Tennessee", "TN",
+    "Texas", "TX",
+    "Utah", "UT",
+    "Vermont", "VT",
+    "Virginia", "VA",
+    "Washington", "WA",
+    "West Virginia", "WV",
+    "Wisconsin", "WI",
+    "Wyoming", "WY",
+    "District of Columbia", "DC",
+    "American Samoa", "AS",
+    "Guam", "GU",
+    "Northern Mariana Islands", "MP",
+    "Puerto Rico", "PR",
+    "United States Minor Outlying Islands", "UM",
+    "U.S. Virgin Islands", "VI","Canada", "CA",
+    "United States of America", "USA"]
+for i,state_t in enumerate(df_ori.state):
+  result_state = [s for f in state_t for s in name_list if is_similar(f,s, 0.7)]
+  df_ori['state_corr'][i]=result_state
   
-for i, state_ori in enumerate(df_ori.state):
+for i, state_ori in enumerate(df_ori.state_corr):
   df_ori['state_abbr'][i], df_ori['country_abbr'][i] = Find_State_Country(state_ori)
 df_ori_1=df_ori.iloc[:,[45,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,44,48]]  
 with col11:  
