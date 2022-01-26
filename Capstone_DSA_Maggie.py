@@ -3,6 +3,7 @@ import pandas as pd
 import plotly
 import plotly.express as px
 import base64
+import os
 
 #define functions
 def Turn_DICT_Uppercase(dic):
@@ -209,5 +210,5 @@ with col11:
 #Ballon
 clicks=col11.button('Export the figure')
 if clicks:
-  plotly.offline.plot(fig_scatter1, filename='C:/Users/XXiong/Downloads/Myplot.html')
+  fig_scatter1.write_image("fig1.jpeg")
 #         st.ballons()
