@@ -198,8 +198,10 @@ with col11:
     st.plotly_chart(fig_4, width=600, height=600)
   title_ch3='****3D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch3}</h4>',unsafe_allow_html=True)
-  with st.expander(""):   
-    fig_scatter1=px.scatter_3d(df_1, y='sum_score', x='age', z='home_computer', color='gender', size='rt_total')
+  with st.expander(""): 
+    rt_diff = (df_1["rt_total"].max() - df_1["rt_total"].min()) / 10
+    df_1["rt_scale"] = (df_1["rt_total"] - df_1["rt_total"].min()) / rt_diff + 1
+    fig_scatter1=px.scatter_3d(df_1, y='sum_score', x='age', z='home_computer', color='gender', size='rt_scale')
     st.plotly_chart(fig_scatter1, width=1500, height=1500)
 
         
