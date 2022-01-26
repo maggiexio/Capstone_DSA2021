@@ -207,8 +207,7 @@ with col11:
 
         
 #Ballon
-a1, a2, a3=st.columns(3)
-clicks=a2.button('Export the figure')
+clicks=col11.button('Export the figure')
 if clicks:
-  fig_scatter1.write_html('scatterplot.html')
+  plotly.offline.plot(fig_scatter1, filename='C:/Downloads/Myplot.html')
 #         st.ballons()
