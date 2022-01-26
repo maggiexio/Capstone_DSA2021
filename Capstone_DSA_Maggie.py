@@ -242,11 +242,12 @@ if sex_choice != "All":
 mode_choice = st.sidebar.radio('Whether take the test at home:', ['All', 'Yes', 'No'])
 if mode_choice != "All":
   df_1=df_1.query("home_computer==@mode_choice")
-#radio1=st.radio('Navigation', ['All', 'Yes', 'No'], index=1)
-#if mode_choice != "All":
-#  df_1=df_1.query("home_computer==@radio1")
 
 
+# figures display
+rt_diff = (df_1["rt_total"].max() - df_1["rt_total"].min()) / 10
+df_1["rt_scale"] = (df_1["rt_total"] - df_1["rt_total"].min()) / rt_diff + 1
+df_1["rt_scale"] = pow(df_1["rt_scale"],2)
 with col11:  
   title_ch1='Data Visualizaion'
   st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
@@ -256,8 +257,10 @@ with col11:
     fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer', marginal='box')
     st.plotly_chart(fig_hist1, width=600, height=600)
   with st.expander("Animation"):    
-    fig_hist2=px.bar(df_1, x='age_group', animation_frame='state_abbr', color='gender')
-    st.plotly_chart(fig_hist2, width=600, height=600)
+    fig_ani1=px.bar(df_1, x='age_group', animation_frame='state_abbr', color='gender')
+    st.plotly_chart(fig_ani1, width=600, height=600)
+     fig_ani2=px.scatter_3d(df_1, y='sum_score', x='age', animation_frame=='age_group', color='gender', size='rt_scale', size_max=60)
+    st.plotly_chart(fig_ani2, width=600, height=600)   
   with st.expander("Pie Charts"):    
     fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
     st.plotly_chart(fig_3,  width=600, height=600)
@@ -267,9 +270,6 @@ with col11:
   title_ch3='****3D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch3}</h4>',unsafe_allow_html=True)
   with st.expander(""): 
-    rt_diff = (df_1["rt_total"].max() - df_1["rt_total"].min()) / 10
-    df_1["rt_scale"] = (df_1["rt_total"] - df_1["rt_total"].min()) / rt_diff + 1
-    df_1["rt_scale"] = pow(df_1["rt_scale"],2)
     fig_scatter1=px.scatter_3d(df_1, y='sum_score', x='age', z='home_computer', color='gender', size='rt_scale', size_max=50)
     st.plotly_chart(fig_scatter1, width=3000, height=3000)
 
