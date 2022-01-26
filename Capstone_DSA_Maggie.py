@@ -4,7 +4,7 @@ import plotly
 import plotly.express as px
 import base64
 import difflib
-from difflib_data import *
+
 
 #define functions
 def Turn_DICT_Uppercase(dic):
