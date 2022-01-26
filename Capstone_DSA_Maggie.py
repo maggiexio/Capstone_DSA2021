@@ -134,7 +134,7 @@ df_ori['age_group']=""
 bins= [0,20,35,55,80]
 labels = ['Teen','Young Adult','Mid-aged Adult','Older Adult']
 df_ori['age_group'] = pd.cut(df_ori['age'], bins=bins, labels=labels, right=False)
-df_ori['age_group'] = df_ori['AgeGroup'].cat.add_categories('unknown').fillna('unknown')    
+df_ori['age_group'] = df_ori['age_group'].cat.add_categories('unknown').fillna('unknown')    
   
 for i, state_ori in enumerate(df_ori.state):
   df_ori['state_abbr'][i], df_ori['country_abbr'][i] = Find_State_Country(state_ori)
