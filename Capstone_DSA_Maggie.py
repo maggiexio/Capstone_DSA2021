@@ -258,7 +258,7 @@ with col11:
     st.plotly_chart(fig_hist1, width=600, height=600)
   with st.expander("Bar charts"): 
     sorted_df = df_1.sort_values(by='age')
-    fig_bar1=px.bar(sorted_df, y='sum_score', x='age_group', color='age_group')
+    fig_bar1=px.bar(sorted_df, y='sum_score', x='age_group', color='age_group', facet_row='age_group', barmode='group')
     st.plotly_chart(fig_bar1, width=600, height=600)
   with st.expander("Animation"):  
     fig_ani1=px.bar(df_1, x='age_group', animation_frame='state_abbr', color='gender')
