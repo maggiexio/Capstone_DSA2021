@@ -132,7 +132,7 @@ df_ori['state_abbr']=""
 df_ori['country_abbr']=""
 df_ori['age_group']=""
 bins= [0,20,35,55,80]
-labels = ['Teen','Young Adult','Mid-aged Adult','Older Adult']
+labels = ['Teen(<20)','Young Adult(20,35)','Mid-aged Adult(35-55)','Older Adult(>55)']
 df_ori['age_group'] = pd.cut(df_ori['age'], bins=bins, labels=labels, right=False)
 df_ori['age_group'] = df_ori['age_group'].cat.add_categories('unknown').fillna('unknown')    
   
