@@ -133,6 +133,7 @@ with col12:
 # read in data
 df_ori=raw_data("data_capstone_dsa2021_2022.csv")
 df_ori['rt_gs_1']=""
+df_ori['state_corr']=""
 df_ori['state_abbr']=""
 df_ori['country_abbr']=""
 df_ori['age_group']=""
