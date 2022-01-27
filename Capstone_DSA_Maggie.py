@@ -296,7 +296,7 @@ with col11:
 clicks=col11.button('Click to see the class')
 if clicks:
 #  plotly.offline.plot(fig_scatter1, filename='C:/Users/XXiong/Downloads/lifeExp.html')
-  header_html = "<img src='data:png;base64,{}' class='img-fluid'>".format(img_to_bytes("DSA.png"))
+  header_html = "<img src='data:image/png;base64,{}' class='img-fluid'>".format(img_to_bytes("DSA.png"))
   st.markdown(
     header_html, unsafe_allow_html=True)
 #         st.ballons()
