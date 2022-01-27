@@ -255,11 +255,10 @@ with col11:
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch2}</h4>',unsafe_allow_html=True)
   with st.expander("Histogram"):    
     fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer', marginal='box')
-    st.plotly_chart(fig_hist1,  use_container_width=True,, height=600)
+    st.plotly_chart(fig_hist1,  use_container_width=True, height=600)
   with st.expander("Bar charts"): 
     sorted_df = df_1.sort_values(by='age')
     sorted_df = sorted_df.reset_index(drop=True)
-    st.dataframe(sorted_df)
     fig_bar1=px.bar(sorted_df, y='sum_score', color='age_group', facet_row='age_group', opacity=0.8, facet_row_spacing=0.01)
     st.plotly_chart(fig_bar1, use_container_width=True, height=400)
   with st.expander("Animation"):  
