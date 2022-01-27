@@ -271,6 +271,9 @@ with col11:
   with st.expander("Pie Charts"):    
     fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
     st.plotly_chart(fig_3,   use_container_width=True, height=600)
+  with st.expander("Tree Map"):    
+    fig_tree=px.treemap(df_1, color='sum_score', values='age',  path=['country_abbr','state_abbr'])
+    st.plotly_chart(fig_tree, use_container_width=True, height=600)    
   with st.expander("choropleth map"):
     mean_df = df_1.groupby("state_abbr").mean()
     mean_df.reset_index(inplace=True)
