@@ -7,10 +7,6 @@ import difflib
 
 
 #define functions
-def img_to_bytes(img_path):
-    img_bytes = Path(img_path).read_bytes()
-    encoded = base64.b64encode(img_bytes).decode()
-    return encoded
 
 def Turn_DICT_Uppercase(dic):
   return {k.upper():v.upper() for k,v in dic.items()}
@@ -295,4 +291,7 @@ with col11:
 #Ballon
 clicks=col11.button('Click to see the class')
 if clicks:
-    st.image('image/DSA.png')
+    placeh=st.image('image/DSA.png')
+clicks_again=col11.button('Hide the class pic') 
+if clicks_again:
+    placeh.empty()
