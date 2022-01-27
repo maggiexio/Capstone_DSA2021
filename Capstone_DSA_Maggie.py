@@ -273,8 +273,9 @@ with col11:
     st.plotly_chart(fig_3,   use_container_width=True, height=600)
   with st.expander("choropleth map"):
     mean_df = df_1.groupby("state_abbr").mean()
+    mean_df = mean_df.reset_index(drop=True)
     st.dataframe(mean_df)
-    fig_4=px.choropleth(df_1, color='sum_score',  locations='state_abbr', locationmode='USA-states')
+    fig_4=px.choropleth(mean_df, color='sum_score',  locations='state_abbr', locationmode='USA-states')
     st.plotly_chart(fig_4,  use_container_width=True, height=600)
   title_ch3='****3D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch3}</h4>',unsafe_allow_html=True)
