@@ -261,7 +261,7 @@ with col11:
     sorted_df = sorted_df.reset_index(drop=True)
     st.dataframe(sorted_df)
     fig_bar1=px.bar(sorted_df, y='sum_score', color='age_group', facet_row='age_group', opacity=0.8, facet_row_spacing=0.01)
-    st.plotly_chart(fig_bar1, height=400)
+    st.plotly_chart(fig_bar1, use_container_width=True, height=400)
   with st.expander("Animation"):  
     fig_ani1=px.bar(df_1, x='age_group', animation_frame='state_abbr', color='gender')
     fig_ani1.update_layout(transition = {'duration': 30000})
