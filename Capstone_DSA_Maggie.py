@@ -253,28 +253,28 @@ with col11:
   st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
   title_ch2='****2D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch2}</h4>',unsafe_allow_html=True)
-  with st.expander("**Histogram:** distributions of sum score for male/female, under different test-taking mode: take the test at home or not "):    
+  with st.expander("Histogram:   distributions of sum score for male/female, under different test-taking mode: take the test at home or not "):    
     fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer', marginal='box')
     st.plotly_chart(fig_hist1,  use_container_width=True, height=600)
-  with st.expander("Bar charts: sum score distribution for each age group"): 
+  with st.expander("Bar charts:    sum score distribution for each age group"): 
     sorted_df = df_1.sort_values(by='age')
     sorted_df = sorted_df.reset_index(drop=True)
     fig_bar1=px.bar(sorted_df, y='sum_score', color='age_group', facet_row='age_group', opacity=0.8, facet_row_spacing=0.01)
     st.plotly_chart(fig_bar1, use_container_width=True, height=400)
-  with st.expander("Animation: display the sum score pattern across states and the relationship with age"):  
+  with st.expander("Animation:    display the sum score pattern across states and the relationship with age"):  
     fig_ani1=px.bar(df_1, x='age_group', animation_frame='state_abbr', color='gender')
     fig_ani1.update_layout(transition = {'duration': 30000})
     st.plotly_chart(fig_ani1,  use_container_width=True, height=600)
     fig_ani2=px.scatter(df_1, y='sum_score', x='age', animation_frame='state_abbr', color='gender', size='rt_scale', size_max=60)
     fig_ani2.update_layout(transition = {'duration': 30000})
     st.plotly_chart(fig_ani2,  use_container_width=True, height=600)   
-  with st.expander("Pie Charts: check sum score distribution under country and state"):    
+  with st.expander("Pie Charts:    check sum score distribution under country and state"):    
     fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
     st.plotly_chart(fig_3,   use_container_width=True, height=600)
-  with st.expander("Tree Map: check total response time distribution under country and state"):    
+  with st.expander("Tree Map:    check total response time distribution under country and state"):    
     fig_tree=px.treemap(df_1, color='rt_total',  path=['country_abbr','state_abbr'])
     st.plotly_chart(fig_tree, use_container_width=True, height=600)    
-  with st.expander("choropleth map: check score distribution from a choropleth map"):
+  with st.expander("choropleth map:    check score distribution from a choropleth map"):
     mean_df = df_1.groupby("state_abbr").mean()
     mean_df.reset_index(inplace=True)
     mean_df = mean_df.rename(columns = {'index':'state_abbr'})
