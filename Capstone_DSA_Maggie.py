@@ -291,5 +291,6 @@ with col11:
 #Ballon
 clicks=col11.button('Click to see the class')
 if clicks:
-    placeh=st.image('image/DSA.png')
+    with st.expander(""):
+      placeh=st.image('image/DSA.png')
 
