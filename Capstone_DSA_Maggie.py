@@ -271,7 +271,9 @@ with col11:
   with st.expander("Pie Charts"):    
     fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
     st.plotly_chart(fig_3,   use_container_width=True, height=600)
-  with st.expander("choropleth map"):    
+  with st.expander("choropleth map"):
+    mean_df = df.groupby("state_abbr").mean()
+    st.dataframe(mean_df)
     fig_4=px.choropleth(df_1, color=average('sum_score'),  locations='state_abbr', locationmode='USA-states')
     st.plotly_chart(fig_4,  use_container_width=True, height=600)
   title_ch3='****3D interactive plots********'
