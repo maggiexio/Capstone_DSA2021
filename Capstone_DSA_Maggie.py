@@ -7,6 +7,11 @@ import difflib
 
 
 #define functions
+def img_to_bytes(img_path):
+    img_bytes = Path(img_path).read_bytes()
+    encoded = base64.b64encode(img_bytes).decode()
+    return encoded
+
 def Turn_DICT_Uppercase(dic):
   return {k.upper():v.upper() for k,v in dic.items()}
 
@@ -288,8 +293,10 @@ with col11:
 
         
 #Ballon
-clicks=col11.button('Export the figure')
+clicks=col11.button('Click to see the class')
 if clicks:
 #  plotly.offline.plot(fig_scatter1, filename='C:/Users/XXiong/Downloads/lifeExp.html')
-  fig_scatter1.write_html("file.html")
+  header_html = "<img src='data:image/png;base64,{}' class='img-fluid'>".format(img_to_bytes("header.png"))
+  st.markdown(
+    header_html, unsafe_allow_html=True)
 #         st.ballons()
