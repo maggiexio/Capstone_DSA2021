@@ -255,7 +255,7 @@ with col11:
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch2}</h4>',unsafe_allow_html=True)
   with st.expander("Histogram"):    
     fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer', marginal='box')
-    st.plotly_chart(fig_hist1, width=600, height=600)
+    st.plotly_chart(fig_hist1,  use_container_width=True,, height=600)
   with st.expander("Bar charts"): 
     sorted_df = df_1.sort_values(by='age')
     sorted_df = sorted_df.reset_index(drop=True)
@@ -265,21 +265,21 @@ with col11:
   with st.expander("Animation"):  
     fig_ani1=px.bar(df_1, x='age_group', animation_frame='state_abbr', color='gender')
     fig_ani1.update_layout(transition = {'duration': 30000})
-    st.plotly_chart(fig_ani1, width=600, height=600)
+    st.plotly_chart(fig_ani1,  use_container_width=True, height=600)
     fig_ani2=px.scatter(df_1, y='sum_score', x='age', animation_frame='state_abbr', color='gender', size='rt_scale', size_max=60)
     fig_ani2.update_layout(transition = {'duration': 30000})
-    st.plotly_chart(fig_ani2, width=600, height=600)   
+    st.plotly_chart(fig_ani2,  use_container_width=True, height=600)   
   with st.expander("Pie Charts"):    
     fig_3=px.sunburst(df_1, color='sum_score',  path=['country_abbr','state_abbr'])
-    st.plotly_chart(fig_3,  width=600, height=600)
+    st.plotly_chart(fig_3,   use_container_width=True, height=600)
   with st.expander("choropleth map"):    
     fig_4=px.choropleth(df_1, color='sum_score',  locations='country_abbr')
-    st.plotly_chart(fig_4, width=600, height=600)
+    st.plotly_chart(fig_4,  use_container_width=True, height=600)
   title_ch3='****3D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch3}</h4>',unsafe_allow_html=True)
   with st.expander(""): 
     fig_scatter1=px.scatter_3d(df_1, y='sum_score', x='age', z='home_computer', color='gender', size='rt_scale', size_max=50)
-    st.plotly_chart(fig_scatter1, width=3000, height=3000)
+    st.plotly_chart(fig_scatter1,  use_container_width=True,, height=3000)
 
         
 #Ballon
