@@ -292,6 +292,4 @@ with col11:
 clicks=col11.button('Click to see the class')
 if clicks:
     placeh=st.image('image/DSA.png')
-clicks_again=col11.button('Hide the class pic') 
-if clicks_again:
-    placeh.empty()
+
