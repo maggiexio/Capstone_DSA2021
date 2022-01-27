@@ -253,7 +253,7 @@ with col11:
   st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
   title_ch2='****2D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch2}</h4>',unsafe_allow_html=True)
-  with st.expander("Histogram: distributions of sum score for male/female, under different test-taking mode: take the test at home or not "):    
+  with st.expander("**Histogram:** distributions of sum score for male/female, under different test-taking mode: take the test at home or not "):    
     fig_hist1=px.histogram(df_1, x='sum_score', color='gender', facet_col='home_computer', marginal='box')
     st.plotly_chart(fig_hist1,  use_container_width=True, height=600)
   with st.expander("Bar charts: sum score distribution for each age group"): 
