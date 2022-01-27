@@ -273,7 +273,8 @@ with col11:
     st.plotly_chart(fig_3,   use_container_width=True, height=600)
   with st.expander("choropleth map"):
     mean_df = df_1.groupby("state_abbr").mean()
-    mean_df = mean_df.reset_index(drop=True)
+    mean_df.reset_index(inplace=True)
+    mean_df = mean_df.rename(columns = {'index':'state_abbr'})
     st.dataframe(mean_df)
     fig_4=px.choropleth(mean_df, color='sum_score',  locations='state_abbr', locationmode='USA-states')
     st.plotly_chart(fig_4,  use_container_width=True, height=600)
