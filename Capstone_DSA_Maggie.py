@@ -202,7 +202,7 @@ name_list= ["Alabama", "AL",
     "U.S. Virgin Islands", "VI","Canada", "CA",
     "United States of America", "USA"]
 for i,state_t in enumerate(df_ori.state):
-  result_state = [s for f in state_t.split() for s in name_list if is_similar(f,s, 0.7)]
+  result_state = [s for f in state_t.split() for s in name_list if is_similar(f,s, 0.9)]
   df_ori['state_corr'][i]=",".join(result_state)
   
 for i, state_ori in enumerate(df_ori.state_corr):
