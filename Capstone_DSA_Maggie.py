@@ -205,7 +205,7 @@ name_list=[t.upper() for t in name_list]
 for i,state_t in enumerate(df_ori.state):
   state_t=state_t.upper()
   result_state = [s.capitalize() for f in state_t.split(',') for s in name_list if is_similar(f,s, 0.7)]
-  if result_state='':
+  if result_state=='':
     result_state = [s.capitalize() for f in state_t.split() for s in name_list if is_similar(f,s, 0.7)]
   df_ori['state_corr'][i]=",".join(result_state)
   
