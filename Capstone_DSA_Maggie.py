@@ -209,8 +209,9 @@ for i,state_t in enumerate(df_ori.state):
   result_state = [s.capitalize() for f in state_t.split() for s in name_list if is_similar(f,s, 0.7)]
   if result_state=='':
     result_state = [s.capitalize() for f in state_t.split(',') for s in name_list if is_similar(f,s, 0.7)]
-  if result_state[0].upper()=='USA':
-    result_state[0]=='USA'
+  if len(result_state)=1:
+    if result_state[0].upper()=='USA':
+      result_state[0]=='USA'
   df_ori['state_corr'][i]=",".join(result_state)
   
 for i, state_ori in enumerate(df_ori.state_corr):
