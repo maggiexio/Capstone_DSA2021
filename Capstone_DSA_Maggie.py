@@ -87,6 +87,7 @@ def Find_State_Country(state_name):
   country_abbrev={
     "Canada": "CA",
     "United States of America": "USA",
+     "United States": "USA",   
     "Singapore": "SGP"
   }
   us_state_to_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
@@ -201,13 +202,15 @@ name_list= ["Alabama", "AL",
     "Puerto Rico", "PR",
     "United States Minor Outlying Islands", "UM",
     "U.S. Virgin Islands", "VI","Canada", "CA",
-    "United States of America", "USA", "Singapore"]
+    "United States of America", "USA", "Singapore", "United States"]
 name_list=[t.upper() for t in name_list]
 for i,state_t in enumerate(df_ori.state):
   state_t=state_t.upper()
   result_state = [s.capitalize() for f in state_t.split() for s in name_list if is_similar(f,s, 0.7)]
   if result_state=='':
     result_state = [s.capitalize() for f in state_t.split(',') for s in name_list if is_similar(f,s, 0.7)]
+  if result_state.upper()=='USA':
+    result_state=='USA'
   df_ori['state_corr'][i]=",".join(result_state)
   
 for i, state_ori in enumerate(df_ori.state_corr):
