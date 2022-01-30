@@ -25,7 +25,33 @@ def table_download(df):
     return href
 
 def Find_State_Country(state_name):
-  us_state_to_abbrev = {
+ 
+  us_state_to_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
+  country_abbrev=Turn_DICT_Uppercase(country_abbrev)
+
+  state_name=state_name.replace(',',' ',)
+  state=''
+  country='USA'
+  for t in set(state_name.split()):
+      if t.upper() in us_state_to_abbrev.keys():
+          state=us_state_to_abbrev[t.upper()]
+      if  t.upper() in us_state_to_abbrev.values():
+          state=t.upper()
+      if t.upper() in country_abbrev.keys():
+          country=country_abbrev[t.upper()]
+      if  t.upper() in country_abbrev.values():
+          country=t.upper()  
+  return state, country
+    
+   
+
+#@st.cache
+def raw_data(input_file):
+  df=pd.read_csv(input_file)
+  return df
+
+#######################glabal variables
+ us_state_to_abbrev = {
     "Alabama": "AL",
     "Alaska": "AK",
     "Arizona": "AZ",
@@ -95,31 +121,14 @@ def Find_State_Country(state_name):
     "Aruba": "ARB",
     "India": "IMD",
   }
-  us_state_to_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
-  country_abbrev=Turn_DICT_Uppercase(country_abbrev)
+  
+key_1=  list(us_state_to_abbrev.keys())
+value_1=  list(us_state_to_abbrev.values())
+state_list = list(set(key_1) | set(value_1))
 
-  state_name=state_name.replace(',',' ',)
-  state=''
-  country='USA'
-  for t in set(state_name.split()):
-      if t.upper() in us_state_to_abbrev.keys():
-          state=us_state_to_abbrev[t.upper()]
-      if  t.upper() in us_state_to_abbrev.values():
-          state=t.upper()
-      if t.upper() in country_abbrev.keys():
-          country=country_abbrev[t.upper()]
-      if  t.upper() in country_abbrev.values():
-          country=t.upper()  
-  return state, country
-    
-   
+df_Country=raw_data("list of country.csv")
 
-#@st.cache
-def raw_data(input_file):
-  df=pd.read_csv(input_file)
-  return df
-
-#######################
+##############################
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 col11, col12 = st.columns((3,1))
 with col11:
