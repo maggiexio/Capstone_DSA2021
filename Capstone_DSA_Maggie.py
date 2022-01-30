@@ -127,6 +127,7 @@ value_1=  list(us_state_to_abbrev.values())
 state_list = list(set(key_1) | set(value_1))
 
 df_Country=raw_data("list of country.csv")
+country_dic=dic(zip(df.state, df.name))
 
 ##############################
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
