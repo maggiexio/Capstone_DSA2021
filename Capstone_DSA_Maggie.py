@@ -90,6 +90,10 @@ def Find_State_Country(state_name):
     "United States": "USA",   
     "Singapore": "SGP",
     "Philippines":"PHL",
+    "Germany": "DEU",
+    "Slovakia": "SVK",
+    "Aruba": "ARB",
+    "India": "IMD",
   }
   us_state_to_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
   country_abbrev=Turn_DICT_Uppercase(country_abbrev)
@@ -202,8 +206,8 @@ name_list= ["Alabama", "AL",
     "Northern Mariana Islands", "MP",
     "Puerto Rico", "PR",
     "United States Minor Outlying Islands", "UM",
-    "U.S. Virgin Islands", "VI","Canada", "CA",
-    "United States of America", "USA", "Singapore", "United States", "Philippines"]
+    "U.S. Virgin Islands", "VI","Canada", "CA", "Aruba", "ARB", "India", "IMD",
+    "United States of America", "USA", "Singapore", "United States", "Philippines", "Germany", "DEU","Slovakia", "SVK"]
 name_list=[t.upper() for t in name_list]
 for i,state_t in enumerate(df_ori.state):
   state_t=state_t.upper()
