@@ -51,7 +51,7 @@ def raw_data(input_file):
   return df
 
 #######################glabal variables
- us_state_to_abbrev = {
+us_state_to_abbrev = {
     "Alabama": "AL",
     "Alaska": "AK",
     "Arizona": "AZ",
@@ -110,7 +110,7 @@ def raw_data(input_file):
     "United States Minor Outlying Islands": "UM",
     "U.S. Virgin Islands": "VI",
    }
-  country_abbrev={
+country_abbrev={
     "Canada": "CA",
     "United States of America": "USA",
     "United States": "USA",   
