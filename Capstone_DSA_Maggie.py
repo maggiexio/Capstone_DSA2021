@@ -168,17 +168,16 @@ country_list_up=[t.upper() for t in country_list]
 for i,state_t in enumerate(df_ori.state):
   tmp_str=state_t.split()
   state_reverse=tmp_str.reverse()
-  state_reverse=state_reverse.upper()
   tmp_c=''
   tmp_s=''
   tmp_l= [tmp_s,tmp_c]
   if len(state_reverse)>=1:
-    tmp_c = [s for s in country_list_up if is_similar(state_reverse[0],s, 0.8)]
+    tmp_c = [s for s in country_list_up if is_similar(state_reverse[0].upper(),s, 0.8)]
     tmp_l[1]=tmp_c
   if len(state_reverse)>=2:
-    tmp_s = [s.capitalize() for s in state_list_up if is_similar(state_reverse[1],s, 0.8)]
+    tmp_s = [s.capitalize() for s in state_list_up if is_similar(state_reverse[1].upper(),s, 0.8)]
     if tmp_s=='' and len(state_reverse)>=3:
-      tmp=[state_reverse[1], state_reverse[2]]
+      tmp=[state_reverse[1].upper(), state_reverse[2].upper()]
       tmp_s = [s.capitalize() for s in state_list_up if is_similar(" ".join(tmp),s, 0.8)]
     tmp_l[0]=tmp_s  
   df_ori['state_corr'][i]=",".join(tmp_l)
