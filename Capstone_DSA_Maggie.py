@@ -170,7 +170,7 @@ for i,state_t in enumerate(df_ori.state):
   state_reverse=state_reverse.upper()
   tmp_c=''
   tmp_s=''
-  tmp_l= =[tmp_s,tmp_c]
+  tmp_l= [tmp_s,tmp_c]
   tmp_str=state_reverse.split()
   if len(tmp_str)>=1:
     tmp_c = [s for s in country_list_up if is_similar(tmp_str[-1],s, 0.8)]
