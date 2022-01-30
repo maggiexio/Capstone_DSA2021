@@ -122,12 +122,15 @@ def raw_data(input_file):
     "India": "IMD",
   }
   
-key_1=  list(us_state_to_abbrev.keys())
-value_1=  list(us_state_to_abbrev.values())
-state_list = list(set(key_1) | set(value_1))
+key_s=  list(us_state_to_abbrev.keys())
+value_s=  list(us_state_to_abbrev.values())
+state_list = list(set(key_s) | set(value_s))
 
 df_Country=raw_data("list of country.csv")
-country_dic=dic(zip(df.state, df.name))
+country_dic=dict(zip(df_Country.Country, df_Country.Code3))
+key_c=  list(us_state_to_abbrev.keys())
+value_c=  list(us_state_to_abbrev.values())
+country_list = list(set(key_c) | set(value_c))
 
 ##############################
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
@@ -160,74 +163,24 @@ labels = ['Teen(<20)','Young Adult(20,35)','Mid-aged Adult(35-55)','Older Adult(
 df_ori['age_group'] = pd.cut(df_ori['age'], bins=bins, labels=labels, right=False)
 df_ori['age_group'] = df_ori['age_group'].cat.add_categories('unknown').fillna('unknown')  
 
-name_list= ["Alabama", "AL",
-    "Alaska", "AK",
-    "Arizona", "AZ",
-    "Arkansas", "AR",
-    "California", "CA",
-    "Colorado", "CO",
-    "Connecticut", "CT",
-    "Delaware", "DE",
-    "Florida", "FL",
-    "Georgia", "GA",
-    "Hawaii", "HI",
-    "Idaho", "ID",
-    "Illinois", "IL",
-    "Indiana", "IN",
-    "Iowa", "IA",
-    "Kansas", "KS",
-    "Kentucky", "KY",
-    "Louisiana", "LA",
-    "Maine", "ME",
-    "Maryland", "MD",
-    "Massachusetts", "MA",
-    "Michigan", "MI",
-    "Minnesota", "MN",
-    "Mississippi", "MS",
-    "Missouri", "MO",
-    "Montana", "MT",
-    "Nebraska", "NE",
-    "Nevada", "NV",
-    "New Hampshire", "NH",
-    "New Jersey", "NJ",
-    "New Mexico", "NM",
-    "New York", "NY",
-    "North Carolina", "NC",
-    "North Dakota", "ND",
-    "Ohio", "OH",
-    "Oklahoma", "OK",
-    "Oregon", "OR",
-    "Pennsylvania", "PA",
-    "Rhode Island", "RI",
-    "South Carolina", "SC",
-    "South Dakota", "SD",
-    "Tennessee", "TN",
-    "Texas", "TX",
-    "Utah", "UT",
-    "Vermont", "VT",
-    "Virginia", "VA",
-    "Washington", "WA",
-    "West Virginia", "WV",
-    "Wisconsin", "WI",
-    "Wyoming", "WY",
-    "District of Columbia", "DC",
-    "American Samoa", "AS",
-    "Guam", "GU",
-    "Northern Mariana Islands", "MP",
-    "Puerto Rico", "PR",
-    "United States Minor Outlying Islands", "UM",
-    "U.S. Virgin Islands", "VI","Canada", "CA", "Aruba", "ARB", "India", "IMD",
-    "United States of America", "USA", "Singapore", "United States", "Philippines", "Germany", "DEU","Slovakia", "SVK"]
-name_list=[t.upper() for t in name_list]
+state_list_up=[t.upper() for t in state_list]
+country_list_up=[t.upper() for t in country_list]
 for i,state_t in enumerate(df_ori.state):
-  state_t=state_t.upper()
-  result_state = [s.capitalize() for f in state_t.split() for s in name_list if is_similar(f,s, 0.7)]
-  if result_state=='':
-    result_state = [s.capitalize() for f in state_t.split(',') for s in name_list if is_similar(f,s, 0.7)]
-  if len(result_state)==1:
-    if result_state[0].upper()=='USA':
-      result_state[0]=='USA'
-  df_ori['state_corr'][i]=",".join(result_state)
+  state_reverse=state_t.reverse()
+  state_reverse=state_reverse.upper()
+  tmp_c=''
+  tmp_s=''
+  tmp_l= =[tmp_s,tmp_c]
+  tmp_str=state_reverse.split()
+  if len(tmp_str)>=1:
+    tmp_c = [s for s in country_list_up if is_similar(tmp_str[-1],s, 0.8)]
+    tmp_l[1]=tmp_c
+  if len(tmp_str)>=2:
+    tmp_s = [s.capitalize() for s in state_list_up if is_similar(tmp_str[-2],s, 0.8)]
+    if tmp_s=='' and len(tmp_str)>=3:
+      tmp_s = [s.capitalize() for s in state_list_up if is_similar(" ".join(tmp_str[-3], tmp_str[-2]),s, 0.8)]
+    tmp_l[0]=tmp_s  
+  df_ori['state_corr'][i]=",".join(tmp_l)
   
 for i, state_ori in enumerate(df_ori.state_corr):
   df_ori['state_abbr'][i], df_ori['country_abbr'][i] = Find_State_Country(state_ori)
