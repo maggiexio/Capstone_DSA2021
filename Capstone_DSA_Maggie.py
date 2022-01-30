@@ -179,7 +179,14 @@ for i,state_t in enumerate(df_ori.state):
       tmp=[tmp_str[-3].upper(), tmp_str[-2].upper()]
       tmp_s = [s.capitalize() for s in state_list_up if is_similar(" ".join(tmp),s, 0.8)]
     tmp_l[0]=tmp_s  
-  df_ori['state_corr'][i]=",".join(tmp_l)
+  if tmp_l[0]=='' and tmp_l[1]!='':
+    df_ori['state_corr'][i]=tmp_l[1]
+  if tmp_l[0]!='' and tmp_l[1]=='':
+    df_ori['state_corr'][i]=tmp_l[0]
+  if tmp_l[0]=='' and tmp_l[1]=='':
+    df_ori['state_corr'][i]=''
+  if tmp_l[0]!='' and tmp_l[1]!='':  
+    df_ori['state_corr'][i]=",".join(tmp_l)
   
 for i, state_ori in enumerate(df_ori.state_corr):
   df_ori['state_abbr'][i], df_ori['country_abbr'][i] = Find_State_Country(state_ori)
