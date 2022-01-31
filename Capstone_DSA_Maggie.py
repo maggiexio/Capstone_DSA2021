@@ -118,7 +118,6 @@ def Find_State_Country(state_name):
   state_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
   country_abbrev=Turn_DICT_Uppercase(country_dic)
 
-  state_name=state_name.replace(',',' ',)
   state=''
   country='USA'
   for t in set(state_name.split()):
@@ -187,7 +186,7 @@ for i,state_t in enumerate(df_ori.state):
         df_ori['state_corr'][i]=''
     if len(tmp_s)!=0 and len(tmp_c)!=0: 
         df_ori['state_corr'][i]=list(set().union(tmp_s,tmp_c))
-#    df_ori['state_corr'][i]=",".join(tmp_l)
+
   
 for i, state_ori in enumerate(df_ori.state_corr):
   df_ori['state_abbr'][i], df_ori['country_abbr'][i] = Find_State_Country(state_ori)
