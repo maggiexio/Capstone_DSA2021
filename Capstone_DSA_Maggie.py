@@ -117,10 +117,9 @@ def table_download(df):
 def Find_State_Country(state_name): 
   state_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
   country_abbrev=Turn_DICT_Uppercase(country_dic)
-
   state=''
   country='USA'
-  for t in set(state_name.split(',')):
+  for t in state_name:
       if t.upper() in state_abbrev.keys():
           state=state_abbrev[t.upper()]
       if  t.upper() in state_abbrev.values():
