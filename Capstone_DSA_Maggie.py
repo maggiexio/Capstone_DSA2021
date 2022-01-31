@@ -137,7 +137,7 @@ def Find_State_Country(state_name):
 
 
 ##############################
-st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 col11, col12 = st.columns((3,1))
 with col11:
   title_1="Data Excursion"
@@ -237,7 +237,8 @@ with col11:
   with st.expander("Bar charts:    sum score distribution for each age group"): 
     sorted_df = df_1.sort_values(by='age')
     sorted_df = sorted_df.reset_index(drop=True)
-    fig_bar1=px.bar(sorted_df, y='sum_score', color='age_group', facet_row='age_group', opacity=0.8, facet_row_spacing=0.01)
+    opac = st.text_input('Opacity(0-1)', '0.8')
+    fig_bar1=px.bar(sorted_df, y='sum_score', color='age_group', facet_row='age_group', opacity=float(opac), facet_row_spacing=0.01)
     st.plotly_chart(fig_bar1, use_container_width=True, height=400)
   with st.expander("Animation:    display the sum score pattern across states and the relationship with age"):  
     fig_ani1=px.bar(df_1, x='age_group', animation_frame='state_abbr', color='gender')
