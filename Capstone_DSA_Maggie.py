@@ -155,7 +155,7 @@ with col12:
   if user_input.lower()=='no question':
     st.write ("Great! Have a nice day!")
   else:
-    if user_input.lower()!=''
+    if user_input.lower()!='': 
       st.write ("Sorry, I am not sure! Please contact xxiong@ets.org")
          
 # read in data
