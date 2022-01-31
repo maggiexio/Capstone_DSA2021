@@ -128,6 +128,8 @@ def Find_State_Country(state_name):
           country=country_abbrev[t.upper()]
       if  t.upper() in country_abbrev.values():
           country=t.upper()  
+  if state in value.s:
+    country='USA'
   return state, country
     
    
