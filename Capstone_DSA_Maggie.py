@@ -166,27 +166,23 @@ df_ori['age_group'] = df_ori['age_group'].cat.add_categories('unknown').fillna('
 state_list_up=[t.upper() for t in state_list]
 country_list_up=[t.upper() for t in country_list]
 for i,state_t in enumerate(df_ori.state):
-  tmp_str=state_t.split()
-  tmp_c=''
-  tmp_s=''
-  tmp_l= [tmp_s,tmp_c]
-  if len(tmp_str)>=1:
-    tmp_c = [s for s in country_list_up if is_similar(tmp_str[-1].upper(),s, 0.8)]
-    tmp_l[1]=tmp_c
-  if len(tmp_str)>=2:
-    tmp_s = [s.capitalize() for s in state_list_up if is_similar(tmp_str[-2].upper(),s, 0.8)]
-    if tmp_s=='' and len(tmp_str)>=3:
-      tmp=[tmp_str[-3].upper(), tmp_str[-2].upper()]
-      tmp_s = [s.capitalize() for s in state_list_up if is_similar(" ".join(tmp),s, 0.8)]
-    tmp_l[0]=tmp_s  
-  if tmp_l[0]=='' and tmp_l[1]!='':
-    df_ori['state_corr'][i]=tmp_l[1]
-  if tmp_l[0]!='' and tmp_l[1]=='':
-    df_ori['state_corr'][i]=tmp_l[0]
-  if tmp_l[0]=='' and tmp_l[1]=='':
-    df_ori['state_corr'][i]=''
-  if tmp_l[0]!='' and tmp_l[1]!='': 
-    print (tmp_l)
+    tmp_str=state_t.split(',')
+    if len(tmp_str)>=1:
+        tmp_s = [s for s in state_list_up if is_similar(tmp_str[-1].upper(),s, 0.9)]
+        tmp_c = [s for s in country_list_up if is_similar(tmp_str[-1].upper(),s, 0.8)]
+    if len(tmp_s)==0 and len(tmp_str)>=2:
+        tmp_s = [s.capitalize() for s in state_list_up if is_similar(tmp_str[-2].upper(),s, 0.9)]
+    if len(tmp_s)==0 and len(tmp_str)>=3:
+          tmp=[tmp_str[-3].upper(), tmp_str[-2].upper()]
+          tmp_s = [s.capitalize() for s in state_list_up if is_similar(" ".join(tmp),s, 0.9)]
+    if len(tmp_s)==0 and len(tmp_c)!=0:
+        df_ori['state_corr'][i]=tmp_c
+    if len(tmp_s)!=0 and len(tmp_c)==0:
+        df_ori['state_corr'][i]=tmp_s
+    if len(tmp_s)==0 and len(tmp_c)==0:
+        df_ori['state_corr'][i]=''
+    if len(tmp_s)!=0 and len(tmp_c)!=0: 
+        df_ori['state_corr'][i]=list(set().union(tmp_s,tmp_c))
 #    df_ori['state_corr'][i]=",".join(tmp_l)
   
 for i, state_ori in enumerate(df_ori.state_corr):
