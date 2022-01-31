@@ -119,7 +119,7 @@ def Find_State_Country(state_name):
   country_abbrev=Turn_DICT_Uppercase(country_dic)
   state=''
   country='USA'
-  for t in state_name:
+  for t in state_name.split(','):
       if t.upper() in state_abbrev.keys():
           state=state_abbrev[t.upper()]
       if  t.upper() in state_abbrev.values():
