@@ -154,6 +154,8 @@ with col12:
   user_input = st.text_area("Type your questions here (enter 'contrl+enter' to finish your questions)", value="", max_chars=5000)
   if user_input.lower()=='no question':
     st.write ("Great! Have a nice day!")
+  else:
+    st.write ("Sorry, I am not sure! Please contact xxiong@ets.org")
          
 # read in data
 df_ori=raw_data("data_capstone_dsa2021_2022.csv")
