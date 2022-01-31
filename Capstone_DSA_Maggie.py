@@ -128,8 +128,8 @@ state_list = list(set(key_s) | set(value_s))
 
 df_Country=raw_data("list_of_country.csv")
 country_dic=dict(zip(df_Country.Country, df_Country.Code3))
-key_c=  list(us_state_to_abbrev.keys())
-value_c=  list(us_state_to_abbrev.values())
+key_c=  list(country_dic.keys())
+value_c=  list(country_dic.values())
 country_list = list(set(key_c) | set(value_c))
 
 ##############################
