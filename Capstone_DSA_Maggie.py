@@ -137,7 +137,7 @@ def Find_State_Country(state_name):
 
 
 ##############################
-st.set_page_config(layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(layout="wide", initial_sidebar_state="auto")
 col11, col12 = st.columns((3,1))
 with col11:
   title_1="Data Excursion"
