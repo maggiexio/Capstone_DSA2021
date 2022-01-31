@@ -5,51 +5,6 @@ import plotly.express as px
 import base64
 import difflib
 
-
-#define functions
-
-def Turn_DICT_Uppercase(dic):
-  return {k.upper():v.upper() for k,v in dic.items()}
-
-def is_similar(first, second, ratio):
-    return difflib.SequenceMatcher(None, first, second).ratio() > ratio
-
-def table_download(df):
-    """Generates a link allowing the data in a given panda dataframe to be downloaded
-    in:  dataframe
-    out: href string
-    """
-    csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode() 
-    href = f'<a href="data:file/csv;base64,{b64}" download="myfile.csv">Download csv file</a>'
-    return href
-
-def Find_State_Country(state_name):
- 
-  us_state_to_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
-  country_abbrev=Turn_DICT_Uppercase(country_abbrev)
-
-  state_name=state_name.replace(',',' ',)
-  state=''
-  country='USA'
-  for t in set(state_name.split()):
-      if t.upper() in us_state_to_abbrev.keys():
-          state=us_state_to_abbrev[t.upper()]
-      if  t.upper() in us_state_to_abbrev.values():
-          state=t.upper()
-      if t.upper() in country_abbrev.keys():
-          country=country_abbrev[t.upper()]
-      if  t.upper() in country_abbrev.values():
-          country=t.upper()  
-  return state, country
-    
-   
-
-#@st.cache
-def raw_data(input_file):
-  df=pd.read_csv(input_file)
-  return df
-
 #######################glabal variables
 us_state_to_abbrev = {
     "Alabama": "AL",
@@ -131,6 +86,53 @@ country_dic=dict(zip(df_Country.Country, df_Country.Code3))
 key_c=  list(country_dic.keys())
 value_c=  list(country_dic.values())
 country_list = list(set(key_c) | set(value_c))
+
+
+
+#define functions
+
+def Turn_DICT_Uppercase(dic):
+  return {k.upper():v.upper() for k,v in dic.items()}
+
+def is_similar(first, second, ratio):
+    return difflib.SequenceMatcher(None, first, second).ratio() > ratio
+
+def table_download(df):
+    """Generates a link allowing the data in a given panda dataframe to be downloaded
+    in:  dataframe
+    out: href string
+    """
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode() 
+    href = f'<a href="data:file/csv;base64,{b64}" download="myfile.csv">Download csv file</a>'
+    return href
+
+def Find_State_Country(state_name):
+ 
+  us_state_to_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
+  country_abbrev=Turn_DICT_Uppercase(country_abbrev)
+
+  state_name=state_name.replace(',',' ',)
+  state=''
+  country='USA'
+  for t in set(state_name.split()):
+      if t.upper() in us_state_to_abbrev.keys():
+          state=us_state_to_abbrev[t.upper()]
+      if  t.upper() in us_state_to_abbrev.values():
+          state=t.upper()
+      if t.upper() in country_abbrev.keys():
+          country=country_abbrev[t.upper()]
+      if  t.upper() in country_abbrev.values():
+          country=t.upper()  
+  return state, country
+    
+   
+
+#@st.cache
+def raw_data(input_file):
+  df=pd.read_csv(input_file)
+  return df
+
 
 ##############################
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
