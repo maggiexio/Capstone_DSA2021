@@ -5,6 +5,13 @@ import plotly.express as px
 import base64
 import difflib
 
+
+#@st.cache
+def raw_data(input_file):
+  df=pd.read_csv(input_file)
+  return df
+
+
 #######################glabal variables
 us_state_to_abbrev = {
     "Alabama": "AL",
@@ -128,10 +135,6 @@ def Find_State_Country(state_name):
     
    
 
-#@st.cache
-def raw_data(input_file):
-  df=pd.read_csv(input_file)
-  return df
 
 
 ##############################
