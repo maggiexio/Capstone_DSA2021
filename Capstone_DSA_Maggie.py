@@ -118,7 +118,7 @@ def Find_State_Country(state_name):
   state_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
   country_abbrev=Turn_DICT_Uppercase(country_dic)
   state=''
-  country='USA'
+  country=''
   for t in state_name.split(','):
       if t.upper() in state_abbrev.keys():
           state=state_abbrev[t.upper()]
@@ -167,13 +167,13 @@ df_ori['age_group'] = df_ori['age_group'].cat.add_categories('unknown').fillna('
 
 state_list_up=[t.upper() for t in state_list]
 country_list_up=[t.upper() for t in country_list]
-name_list = list(set(state_list) | set(country_list))
+name_list_up = list(set(state_list_up) | set(country_list_up))
 
 for i,state_t in enumerate(df_ori.state):
     state_t=state_t.upper()
-    result=[s for f in state_t.split() for s in state_list_up if is_similar(f,s, 0.8)]
+    result=[s for f in state_t.split() for s in name_list_up if is_similar(f,s, 0.8)]
     if len(result)==0:
-      result=[s for f in state_t.split(',') for s in state_list_up if is_similar(f,s, 0.8)]
+      result=[s for f in state_t.split(',') for s in name_list_up if is_similar(f,s, 0.8)]
     df_ori['state_corr'][i]=",".join(result)
 
   
