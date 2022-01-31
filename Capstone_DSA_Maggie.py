@@ -251,7 +251,7 @@ with col11:
     mean_df = df_1.groupby("country_abbr").mean()
     mean_df.reset_index(inplace=True)
     mean_df = mean_df.rename(columns = {'index':'country_abbr'})
-    fig_4=px.choropleth(mean_df, color='sum_score',  locations='country_abbr', locationmode='country name')
+    fig_4=px.choropleth(mean_df, color='sum_score',  locations='country_abbr', locationmode='country names')
     st.plotly_chart(fig_4,  use_container_width=True, height=600)
   title_ch3='****3D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch3}</h4>',unsafe_allow_html=True)
