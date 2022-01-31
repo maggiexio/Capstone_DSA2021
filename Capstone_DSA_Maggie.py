@@ -172,6 +172,8 @@ name_list = list(set(state_list) | set(country_list))
 for i,state_t in enumerate(df_ori.state):
     state_t=state_t.upper()
     result=[s for f in state_t.split() for s in state_list_up if is_similar(f,s, 0.9)]
+    if len(result)==0:
+      result=[s for f in state_t.split(',') for s in state_list_up if is_similar(f,s, 0.9)]
     df_ori['state_corr'][i]=",".join(result)
 
   
