@@ -114,10 +114,9 @@ def table_download(df):
     href = f'<a href="data:file/csv;base64,{b64}" download="myfile.csv">Download csv file</a>'
     return href
 
-def Find_State_Country(state_name):
- 
+def Find_State_Country(state_name): 
   us_state_to_abbrev=Turn_DICT_Uppercase(us_state_to_abbrev)
-  country_abbrev=Turn_DICT_Uppercase(country_abbrev)
+  country_abbrev=Turn_DICT_Uppercase(country_dic)
 
   state_name=state_name.replace(',',' ',)
   state=''
