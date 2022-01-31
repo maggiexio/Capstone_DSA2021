@@ -152,11 +152,14 @@ with col12:
   st.markdown(f'<h2 style="text-align: center;color: purple;">{title_11}</h2>',unsafe_allow_html=True)
   user_input =''
   user_input = st.text_area("Type your questions here (enter 'contrl+enter' to finish your questions)", value="", max_chars=5000)
-  if user_input.lower()=='no question':
+  if user_input.lower().find('no question') != -1:
     st.write ("Great! Have a nice day!")
   else:
-    if user_input.lower()!='': 
-      st.write ("Sorry, I am not sure! Please contact xxiong@ets.org")
+    if user_input.lower().find('item level plots') != -1:
+      st.write ("Item level plot will be added into a different page! At this point, only test level plots are provided.")
+    else: 
+      if user_input.lower()!='': 
+        st.write ("Sorry, I am not sure! Please contact xxiong@ets.org")
          
 # read in data
 df_ori=raw_data("data_capstone_dsa2021_2022.csv")
