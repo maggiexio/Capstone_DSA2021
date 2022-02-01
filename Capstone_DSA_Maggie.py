@@ -8,6 +8,7 @@ import difflib
 
 import time
 import numpy as np
+import matplotlib
 import matplotlib.pyplot as plt
 from tkinter import *
 import tkinter.messagebox
