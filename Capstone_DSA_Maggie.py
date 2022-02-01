@@ -5,7 +5,7 @@ import plotly.express as px
 import base64
 import difflib
 
-
+#!/usr/bin/env python
 import time
 import numpy as np
 import matplotlib
